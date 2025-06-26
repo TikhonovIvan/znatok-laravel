@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Product-Details | Edurock - Education LMS Template</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico" />
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/animate.min.css" />
+    <link rel="stylesheet" href="../css/aos.min.css" />
+    <link rel="stylesheet" href="../css/magnific-popup.css" />
+    <link rel="stylesheet" href="../css/icofont.min.css" />
+    <link rel="stylesheet" href="../css/slick.css" />
+    <link rel="stylesheet" href="../css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script>
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (
+        localStorage.getItem("theme-color") === "dark" ||
+        (!("theme-color" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("is_dark");
+      }
+      if (localStorage.getItem("theme-color") === "light") {
+        document.documentElement.classList.remove("is_dark");
+      }
+    </script>
+  </head>
+
+  <body class="body__wrapper">
+    <!-- pre loader area start -->
+    <div id="back__preloader">
+      <div id="back__circle_loader"></div>
+      <div class="back__loader_logo">
+        <img loading="lazy" src="../img/pre.png" alt="Preload" />
+      </div>
+    </div>
+    <!-- pre loader area end -->
+
+    <!-- Dark/Light area start -->
+    <div class="mode_switcher my_switcher">
+      <button id="light--to-dark-button" class="light align-items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="ionicon dark__mode"
+          viewBox="0 0 512 512"
+        >
+          <path
+            d="M160 136c0-30.62 4.51-61.61 16-88C99.57 81.27 48 159.32 48 248c0 119.29 96.71 216 216 216 88.68 0 166.73-51.57 200-128-26.39 11.49-57.38 16-88 16-119.29 0-216-96.71-216-216z"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="32"
+          />
+        </svg>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="ionicon light__mode"
+          viewBox="0 0 512 512"
+        >
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-miterlimit="10"
+            stroke-width="32"
+            d="M256 48v48M256 416v48M403.08 108.92l-33.94 33.94M142.86 369.14l-33.94 33.94M464 256h-48M96 256H48M403.08 403.08l-33.94-33.94M142.86 142.86l-33.94-33.94"
+          />
+          <circle
+            cx="256"
+            cy="256"
+            r="80"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-miterlimit="10"
+            stroke-width="32"
+          />
+        </svg>
+
+        <span class="light__mode">Light</span>
+        <span class="dark__mode">Dark</span>
+      </button>
+    </div>
+    <!-- Dark/Light area end -->
+
+    <main class="main_wrapper overflow-hidden">
+      <!-- Шапка_контактов_и_сети__stert -->
+      <div class="topbararea">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-6 col-lg-6">
+              <div class="topbar__left">
+                <ul>
+                  <li>Контакты: +996 500 123 123 - -</li>
+                  <li>Email: Itcroc@mail.com</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+              <div class="topbar__right">
+                <div class="topbar__icon">
+                  <i class="icofont-location-pin"></i>
+                </div>
+                <div class="topbar__text">
+                  <p>Адрес: Бишкек ул.Фрунзе 243</p>
+                </div>
+                <div class="topbar__list">
+                  <ul>
+                    <li>
+                      <a href="#"><i class="icofont-facebook"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="icofont-twitter"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="icofont-instagram"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="icofont-youtube-play"></i></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Шапка_контактов_и_сети__end -->
+
+      <!-- Шапка сайта start -->
+      <header>
+        <div class="headerarea headerarea__2 header__sticky header__area">
+          <div class="container desktop__menu__wrapper">
+            <div class="row">
+              <div class="col-xl-2 col-lg-2 col-md-6">
+                <div class="headerarea__left">
+                  <div class="headerarea__left__logo">
+                    <a href="index.html" class="fs-2" style="font-weight: 900">
+                      <span style="color: #f2277e">Znatok</span
+                      ><span style="color: #5f2ded">-KG</span></a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-7 col-lg-7 main_menu_wrap">
+                <div class="headerarea__main__menu">
+                  <nav>
+                    <ul>
+                      <li class="mega__menu position-static">
+                        <a class="headerarea__has__dropdown" href="index.html"
+                          >Главаня
+                        </a>
+                      </li>
+
+                      <li class="mega__menu position-static">
+                        <a class="headerarea__has__dropdown" href="about.html"
+                          >О нас
+                        </a>
+                      </li>
+
+                      <li class="mega__menu position-static">
+                        <a class="headerarea__has__dropdown" href="course.html"
+                          >Курсы
+                        </a>
+                      </li>
+
+                      <li class="mega__menu position-static">
+                        <a class="headerarea__has__dropdown" href="blog.html"
+                          >Блог
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-6">
+                <div class="headerarea__right">
+                  <div class="headerarea__login">
+                    <a href="login.html"><i class="icofont-user-alt-5"></i></a>
+                  </div>
+                  <div class="headerarea__button">
+                    <a href="login.html">Начать обучение</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="container-fluid mob_menu_wrapper">
+            <div class="row align-items-center">
+              <div class="col-6">
+                <div class="mobile-logo">
+                  <a href="index.html" class="fs-4" style="font-weight: 900">
+                    <span style="color: #f2277e">Znatok</span>
+                    <span style="color: #5f2ded">- KG </span></a
+                  >
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="header-right-wrap">
+                  <div class="mobile-off-canvas">
+                    <a class="mobile-aside-button" href="#"
+                      ><i class="icofont-navigation-menu"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Шапка сайта end -->
+
+      <!-- Mobile Menu Start Here -->
+      <div class="mobile-off-canvas-active">
+        <a class="mobile-aside-close"
+          ><i class="icofont icofont-close-line"></i
+        ></a>
+        <div class="header-mobile-aside-wrap">
+          <div class="mobile-search">
+            <form class="search-form" action="#">
+              <input type="text" placeholder="Найти курс или статью" />
+              <button class="button-search">
+                <i class="icofont icofont-search-2"></i>
+              </button>
+            </form>
+          </div>
+          <div class="mobile-menu-wrap headerarea">
+            <div class="mobile-navigation">
+              <nav>
+                <ul class="mobile-menu">
+                  <li class="menu-item-has-children">
+                    <a href="index.html">Главная</a>
+                  </li>
+                  <li class="menu-item-has-children">
+                    <a href="about.html">О нас</a>
+                  </li>
+                  <li class="menu-item-has-children">
+                    <a href="blog.html">Блог</a>
+                  </li>
+                  <li class="menu-item-has-children">
+                    <a href="course.html">Курсы</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="mobile-curr-lang-wrap">
+            <div class="single-mobile-curr-lang">
+              <a class="mobile-account-active" href="#"
+                >Аккаунт <i class="icofont-thin-down"></i
+              ></a>
+              <div class="lang-curr-dropdown account-dropdown-active">
+                <ul>
+                  <li><a href="login.html">Вход</a></li>
+                  <br />
+                  <li><a href="login.html">Регистрация</a></li>
+                  <br />
+                  <li><a href="login.html">Кабинет</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-social-wrap">
+            <a class="facebook" href="#"
+              ><i class="icofont icofont-facebook"></i
+            ></a>
+            <a class="twitter" href="#"
+              ><i class="icofont icofont-twitter"></i
+            ></a>
+            <a class="pinterest" href="#"
+              ><i class="icofont icofont-pinterest"></i
+            ></a>
+            <a class="instagram" href="#"
+              ><i class="icofont icofont-instagram"></i
+            ></a>
+            <a class="google" href="#"
+              ><i class="icofont icofont-youtube-play"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile Menu end Here -->
+
+      <!-- theme fixed shadow -->
+      <div>
+        <div class="theme__shadow__circle"></div>
+        <div class="theme__shadow__circle shadow__right"></div>
+      </div>
+      <!-- theme fixed shadow -->
+      <!-- breadcrumbarea__section__start -->
+
+      <div class="breadcrumbarea">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-12">
+              <div class="breadcrumb__content__wraper" data-aos="fade-up">
+                <div class="breadcrumb__title">
+                  <h2 class="heading">Создать видео материал</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="shape__icon__2">
+          <img
+            loading="lazy"
+            class="shape__icon__img shape__icon__img__1"
+            src="../img/herobanner/herobanner__1.png"
+            alt="photo"
+          />
+          <img
+            loading="lazy"
+            class="shape__icon__img shape__icon__img__2"
+            src="../img/herobanner/herobanner__2.png"
+            alt="photo"
+          />
+          <img
+            loading="lazy"
+            class="shape__icon__img shape__icon__img__3"
+            src="../img/herobanner/herobanner__3.png"
+            alt="photo"
+          />
+          <img
+            loading="lazy"
+            class="shape__icon__img shape__icon__img__4"
+            src="../img/herobanner/herobanner__5.png"
+            alt="photo"
+          />
+        </div>
+      </div>
+      <!-- breadcrumbarea__section__end-->
+
+      <!-- become__instructor__start -->
+      <div class="create__course sp_100">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-8 col-lg-8 col-md-12 col-12">
+              <div class="create__course__accordion__wraper">
+                <div class="accordion" id="accordionExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                      <p class="mt-4">Добавить видео материала</p>
+                    </h2>
+                    <div
+                      id="collapseOne"
+                      class="accordion-collapse collapse show"
+                      aria-labelledby="headingOne"
+                      data-bs-parent="#accordionExample"
+                    >
+                      <div class="accordion-body">
+                        <div class="become__instructor__form">
+                          <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                              <div class="dashboard__form__wraper">
+                                <div class="dashboard__form__input">
+                                  <label for="#">Название видео</label>
+                                  <input
+                                    type="text"
+                                    placeholder="Укажите ссылку к видео"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-12 mb-4">
+                              <div
+                                class="dashboard__select__heading dashboard__form__input"
+                              >
+                                <label for="#">Укажите раздел</label>
+                              </div>
+                              <div class="dashboard__selector">
+                                <select
+                                  class="form-select"
+                                  aria-label="Default select example"
+                                >
+                                  <option selected>Выберите раздел</option>
+                                  <option value="1">Раздел 1:</option>
+                                  <option value="2">Раздел 2:</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-6 col-12">
+                  <div class="create__course__bottom__button">
+                    <a href="#">Создать видео материал</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-4 col-md-12 col-12 d-none">
+              <div class="create__course__wraper">
+                <div class="create__course__title">
+                  <h4>Пометка для задание курса</h4>
+                </div>
+                <div class="create__course__list">
+                  <ul>
+                    <li>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-check"
+                      >
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      Укажите названи вашего курса.
+                    </li>
+
+                    <li>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-check"
+                      >
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      Курс должен предоставлять <br />решение или базовые
+                      знания.
+                    </li>
+                    <li>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-check"
+                      >
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      Выберите категорию курса.
+                    </li>
+                    <li>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-check"
+                      >
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      Добавьте описание курса.
+                    </li>
+                    <li>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-check"
+                      >
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      Выберите статус курса.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- become__instructor__end -->
+
+      <!-- footer__start -->
+      <div class="footerarea">
+        <div class="container">
+          <div class="footerarea__wrapper footerarea__wrapper__2">
+            <div class="row">
+              <div
+                class="col-xl-4 col-lg-4 col-md-6 col-sm-12"
+                data-aos="fade-up"
+              >
+                <div class="footerarea__inner footerarea__about__us">
+                  <div class="footerarea__heading">
+                    <h3>О нас</h3>
+                  </div>
+                  <div class="footerarea__content">
+                    <p>Мы предлагаем лучше решение для вашего будущего</p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="col-xl-2 col-lg-2 col-md-6 col-sm-6"
+                data-aos="fade-up"
+              >
+                <div class="footerarea__inner">
+                  <div class="footerarea__heading">
+                    <h3>Полезные ссылки</h3>
+                  </div>
+                  <div class="footerarea__list">
+                    <ul>
+                      <li>
+                        <a href="#">Главная</a>
+                      </li>
+                      <li>
+                        <a href="#">О нас</a>
+                      </li>
+                      <li>
+                        <a href="#">Курсы</a>
+                      </li>
+                      <li>
+                        <a href="#">Блог</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="col-xl-3 col-lg-3 col-md-6 col-sm-6"
+                data-aos="fade-up"
+              >
+                <div class="footerarea__inner footerarea__padding__left">
+                  <div class="footerarea__heading">
+                    <h3>Курсы</h3>
+                  </div>
+                  <div class="footerarea__list">
+                    <ul>
+                      <li>
+                        <a href="#">Дизайн пользовательского интерфейса</a>
+                      </li>
+                      <li>
+                        <a href="#">Веб-разработка</a>
+                      </li>
+                      <li>
+                        <a href="#">Бизнес-стратегия</a>
+                      </li>
+                      <li>
+                        <a href="#">Разработка программного обеспечения</a>
+                      </li>
+                      <li>
+                        <a href="#">Деловой английский</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="col-xl-3 col-lg-3 col-md-6 col-sm-12"
+                data-aos="fade-up"
+              >
+                <div class="footerarea__right__wraper footerarea__inner">
+                  <div class="footerarea__heading">
+                    <h3>Недавний пост</h3>
+                  </div>
+                  <div class="footerarea__right__list">
+                    <ul>
+                      <li>
+                        <a href="#">
+                          <div class="footerarea__right__img">
+                            <img
+                              loading="lazy"
+                              src="img/footer/footer__1.png"
+                              alt="footerphoto"
+                            />
+                          </div>
+                          <div class="footerarea__right__content">
+                            <span>02 Apr 2024 </span>
+                            <h6>Best Your Business</h6>
+                          </div>
+                        </a>
+                      </li>
+
+                      <li>
+                        <a href="#">
+                          <div class="footerarea__right__img">
+                            <img
+                              loading="lazy"
+                              src="img/footer/footer__2.png"
+                              alt="footerphoto"
+                            />
+                          </div>
+                          <div class="footerarea__right__content">
+                            <span>02 Apr 2024 </span>
+                            <h6>Keep Your Business</h6>
+                          </div>
+                        </a>
+                      </li>
+
+                      <li>
+                        <a href="#">
+                          <div class="footerarea__right__img">
+                            <img
+                              loading="lazy"
+                              src="img/footer/footer__3.png"
+                              alt="footerphoto"
+                            />
+                          </div>
+                          <div class="footerarea__right__content">
+                            <span>02 Apr 2024 </span>
+                            <h6>Nice Your Business</h6>
+                          </div>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="footerarea__copyright__wrapper footerarea__copyright__wrapper__2"
+          >
+            <div class="row">
+              <div class="col-xl-3 col-lg-3 d-none">
+                <div class="copyright__logo">
+                  <a href="/"
+                    ><img loading="lazy" src="img/logo/logo_2.png" alt="logo"
+                  /></a>
+                </div>
+              </div>
+              <div class="col-xl-12 col-lg-12 text-center">
+                <div
+                  class="footerarea__copyright__content footerarea__copyright__content__2"
+                >
+                  <p>Копирайт© <span>2025</span> все права защищены.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- footer__end -->
+    </main>
+
+    <!-- JS here -->
+    <script src="../js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="../js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/isotope.pkgd.min.js"></script>
+    <script src="../js/slick.min.js"></script>
+    <script src="../js/jquery.meanmenu.min.js"></script>
+    <script src="../js/ajax-form.js"></script>
+    <script src="../js/wow.min.js"></script>
+    <script src="../js/jquery.scrollUp.min.js"></script>
+    <script src="../js/imagesloaded.pkgd.min.js"></script>
+    <script src="../js/jquery.magnific-popup.min.js"></script>
+    <script src="../js/waypoints.min.js"></script>
+    <script src="../js/jquery.counterup.min.js"></script>
+    <script src="../js/plugins.js"></script>
+    <script src="../js/swiper-bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+
+    <script>
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (
+        localStorage.getItem("theme-color") === "dark" ||
+        (!("theme-color" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document
+          .getElementById("light--to-dark-button")
+          ?.classList.add("dark--mode");
+      }
+      if (localStorage.getItem("theme-color") === "light") {
+        document
+          .getElementById("light--to-dark-button")
+          ?.classList.remove("dark--mode");
+      }
+    </script>
+  </body>
+</html>
