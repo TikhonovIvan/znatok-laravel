@@ -41,9 +41,22 @@ Route::middleware('auth')->group(function () {
     Route::put('/profile/password', [AuthController::class, 'updatePassword'])->name('password.update');
 
 
-    //Создание курса
+    //Все курсы
     Route::get('/courses', [CourseController::class, 'index'])->name('course.index');
 
+    /*Редактирование курса*/
+    Route::get('/courses/{id}', [CourseController::class, 'edit'])->name('course.edit');
+    Route::put('/courses/{id}', [CourseController::class, 'update'])->name('course.update');
+
+
+    /*Детали курса*/
+    Route::get('/courses/details/{id}', [CourseController::class, 'courseDetails'])->name('course.details-course');
+
+    /*Добавление курса от студента*/
+    Route::post('/student/add-course', [CourseController::class, 'addCourseByCode'])->name('student.add-course');
+
+
+    /*Создание курса*/
     Route::get('/course', [CourseController::class, 'create'])->name('course.create');
     Route::post('/course', [CourseController::class, 'store'])->name('courses.store');
 

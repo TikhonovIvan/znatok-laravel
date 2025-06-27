@@ -12,26 +12,40 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $teacherId = auth()->id();
+        $user = auth()->user();
 
-        $publishedCourses = Course::where('teacher_id', $teacherId)
-            ->where('status', 'publish')
-            ->get();
+        $addedCourses = collect(); // пустая коллекция на случай если не студент
 
-        $pendingCourses = Course::where('teacher_id', $teacherId)
-            ->where('status', 'pending')
-            ->get();
+        if ($user->role === 'student') {
+            $addedCourses = $user->courses()->with('teacher')->get();
+        }
 
-        $draftCourses = Course::where('teacher_id', $teacherId)
-            ->where('status', 'draft')
-            ->get();
+        if ($user->role === 'teacher') {
+            $publishedCourses = Course::where('teacher_id', $user->id)
+                ->where('status', 'publish')
+                ->get();
+
+            $pendingCourses = Course::where('teacher_id', $user->id)
+                ->where('status', 'pending')
+                ->get();
+
+            $draftCourses = Course::where('teacher_id', $user->id)
+                ->where('status', 'draft')
+                ->get();
+
+            return view('users.course.index-course', [
+                'publishedCourses' => $publishedCourses,
+                'pendingCourses' => $pendingCourses,
+                'draftCourses' => $draftCourses,
+                'addedCourses' => $addedCourses // обязательно передаем
+            ]);
+        }
 
         return view('users.course.index-course', [
-            'publishedCourses' => $publishedCourses,
-            'pendingCourses'   => $pendingCourses,
-            'draftCourses'     => $draftCourses,
+            'addedCourses' => $addedCourses
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -69,6 +83,19 @@ class CourseController extends Controller
     }
 
 
+    /*
+     Страница детали курса и создание лекций, тестов, разделов
+     */
+    public function courseDetails(string $id)
+    {
+        $courseInfo = Course::query()->findOrFail($id);
+        return view('users.course.course-details', [
+            'courseInfo' => $courseInfo,
+        ]);
+
+    }
+
+
     /**
      * Display the specified resource.
      */
@@ -82,7 +109,10 @@ class CourseController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $course = Course::query()->findOrFail($id);
+        return view('users.course.edit-course', [
+            'course' => $course,
+        ]);
     }
 
     /**
@@ -90,8 +120,47 @@ class CourseController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $course = Course::query()->findOrFail($id);
+        $validated = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'cover' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'category' => ['required', 'string', 'max:255'],
+            'short_description' => ['required', 'string', 'max:1000'],
+            'status' => ['required', 'in:draft,pending,publish'],
+            'course_code' => ['required', 'string', 'max:255'],
+        ]);
+
+        $course->update($validated);
+        return redirect()->route('course.details-course', $course->id)->with('success', 'Данные курса обновлены');
+
     }
+
+
+
+    public function addCourseByCode(Request $request)
+    {
+        $request->validate([
+            'course_code' => 'required|string'
+        ]);
+
+        $course = Course::where('course_code', $request->course_code)->first();
+
+        if (!$course) {
+            return back()->with('error', 'Курс с таким кодом не найден');
+        }
+
+        $user = auth()->user();
+
+        if ($user->courses()->where('course_id', $course->id)->exists()) {
+            return back()->with('error', 'Вы уже добавили этот курс');
+        }
+
+        $user->courses()->attach($course->id);
+
+        return back()->with('success', 'Курс успешно добавлен');
+    }
+
 
     /**
      * Remove the specified resource from storage.
