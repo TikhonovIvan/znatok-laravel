@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -93,7 +94,10 @@ class AuthController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::query()->findOrFail($id);
+        return view('users.user-profile-settings', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -101,7 +105,32 @@ class AuthController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::query()->findOrFail($id);
+
+        $validated = $request->validate([
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'bio' => ['nullable', 'string', 'max:255'],
+        ]);
+
+        $user->update($validated);
+        return redirect()->route('settings', $user->id)->with('success', 'Профиль успешно обновлён');
+
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => ['required', 'current_password'], // сверка старого
+            'password' => ['required', 'string', 'min:8', 'confirmed'], // новый + подтверждение
+        ]);
+
+        $user = Auth::user();
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return back()->with('success', 'Пароль успешно обновлён');
     }
 
     /**

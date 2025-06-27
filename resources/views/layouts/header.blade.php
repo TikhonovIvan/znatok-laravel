@@ -92,6 +92,11 @@
 
                         @auth
                         <div class="headerarea__login">
+                            @if(auth()->user()->role == 'student')
+                            <span class="me-3">Статус: Ученик </span>
+                            @else
+                                <span class="me-3">Статус: Учитель</span>
+                            @endif
                             <span class="me-3">{{ auth()->user()->last_name }} {{ auth()->user()->first_name }} </span>
                             <a href="{{route('profile')}}"><i class="icofont-user-alt-5"></i></a>
                         </div>
@@ -217,3 +222,19 @@
         </div>
     </div>
 </div>
+
+{{--<script>--}}
+{{--    document.addEventListener('DOMContentLoaded', function() {--}}
+{{--        const alertElement = document.querySelector('.alert');--}}
+{{--        if (alertElement) {--}}
+{{--            setTimeout(() => {--}}
+{{--                alertElement.classList.add('fade'); // плавное исчезновение--}}
+{{--                alertElement.classList.remove('show');--}}
+{{--                // полностью убрать из DOM через ещё 0.5 сек, когда анимация закончится--}}
+{{--                setTimeout(() => {--}}
+{{--                    alertElement.remove();--}}
+{{--                }, 500);--}}
+{{--            }, 4000);--}}
+{{--        }--}}
+{{--    });--}}
+{{--</script>--}}

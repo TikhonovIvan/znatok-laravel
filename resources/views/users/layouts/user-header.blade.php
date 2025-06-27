@@ -31,7 +31,7 @@
                 </li>
 
                 <li>
-                    <a href="admin-course.html">
+                    <a href="{{route('course.index')}}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                              viewBox="0 0 24 24" fill="none" stroke="currentColor"
                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -77,7 +77,7 @@
         <div class="dashboard__nav">
             <ul>
                 <li>
-                    <a href="admin-settings.html">
+                    <a href="{{route('settings', auth()->user()->id)}}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                              viewBox="0 0 24 24" fill="none" stroke="currentColor"
                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"

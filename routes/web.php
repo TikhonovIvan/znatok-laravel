@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,8 +30,23 @@ Route::middleware('guest')->group(function () {
  * Авторизованный пользователь имеет доступ к этим маршрутам
  ========================================================*/
 Route::middleware('auth')->group(function () {
+
+    //выйти из кабинета
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-
+    //Редактирование профиля
     Route::get('/profile', [AuthController::class, 'userProfile'])->name('profile');
+    Route::get('/settings/{id}', [AuthController::class, 'edit'])->name('settings');
+    Route::put('/settings/{id}', [AuthController::class, 'update'])->name('settings.update');
+    Route::put('/profile/password', [AuthController::class, 'updatePassword'])->name('password.update');
+
+
+    //Создание курса
+    Route::get('/courses', [CourseController::class, 'index'])->name('course.index');
+
+    Route::get('/course', [CourseController::class, 'create'])->name('course.create');
+    Route::post('/course', [CourseController::class, 'store'])->name('courses.store');
+
+
+
 });

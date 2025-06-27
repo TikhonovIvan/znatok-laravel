@@ -38,6 +38,19 @@
             </div>
 
             <div class="col-lg-4 col-md-4">
+                <div class="dashboard__form dashboard__form__margin">Роль </div>
+            </div>
+            @if($user->role == 'student')
+            <div class="col-lg-8 col-md-8">
+                <div class="dashboard__form dashboard__form__margin">Ученик</div>
+            </div>
+            @else
+                <div class="col-lg-8 col-md-8">
+                    <div class="dashboard__form dashboard__form__margin">Учитель</div>
+                </div>
+            @endif
+
+            <div class="col-lg-4 col-md-4">
                 <div class="dashboard__form dashboard__form__margin">Биография</div>
             </div>
             @if($user->bio == null )
