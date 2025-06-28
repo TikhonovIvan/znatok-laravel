@@ -14040,3 +14040,13 @@ Dark Mode
     height: 50px;
 }
 
+
+.bg-top-span {
+    font-size: 12px;
+    background: var(--borderColor);
+    padding: 4px 10px;
+    margin-left: 10px;
+    line-height: 1;
+    border-radius: 20px;
+    font-weight: 700;
+}

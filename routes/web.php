@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LessonController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -76,6 +77,18 @@ Route::middleware('auth')->group(function () {
 
     /*Удалить раздел в курсе*/
     Route::delete('/course/edit/{id}', [CourseController::class, 'destroyChapter'])->name('course.destroy-chapter');
+
+
+    /*Создание лекции*/
+    Route::get('/course/{course}/lesson/create', [LessonController::class, 'create'])->name('course.lesson.create');
+    Route::post('/course/{course}/lesson/create', [LessonController::class, 'store'])->name('course.lesson.store');
+
+    /*Редактирование лекции*/
+    Route::get('/course/lesson/edit/{id}', [LessonController::class, 'edit'])->name('course.lesson.edit');
+    Route::put('/course/lesson/edit/{id}', [LessonController::class, 'update'])->name('course.lesson.update');
+    Route::get('/course/lesson/show/{id}', [LessonController::class, 'show'])->name('course.lesson.show');
+
+    Route::delete('/course/lesson/delete/{id}', [LessonController::class, 'destroy'])->name('course.lesson.delete');
 
 
 

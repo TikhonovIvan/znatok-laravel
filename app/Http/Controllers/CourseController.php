@@ -95,10 +95,13 @@ class CourseController extends Controller
 
     /*
      Страница детали курса и создание лекций, тестов, разделов выводит информацию о куре
+
+    тут выводит ифнормацию о разделах и содержание в разделах лекции и т.д
      */
     public function courseDetails(string $id)
     {
-        $courseInfo = Course::with('sections')->findOrFail($id);
+        $courseInfo = Course::with('sections.lectures')->findOrFail($id);
+
 
         return view('users.course.course-details', [
             'courseInfo' => $courseInfo,
