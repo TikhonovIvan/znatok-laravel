@@ -28,9 +28,12 @@
                         <div class="course__details__heading" data-aos="fade-up">
                             <h3>{{$courseInfo->title}}</h3>
                         </div>
+                        <div class="course__details__heading" data-aos="fade-up">
+                            <h5>Код курса:  {{$courseInfo->course_code}} </h5>
+                        </div>
 
                         <div class="course__details__paragraph" data-aos="fade-up">
-                            <p>{{strlen($courseInfo->short_description) > 150 ? substr($courseInfo->short_description, 0, 150) . '...' : $courseInfo->short_description }}</p>
+                            <p>{{ Str::limit($courseInfo->short_description, 150) }}</p>
                         </div>
 
                         <div class="course__details__tab__wrapper" data-aos="fade-up">
@@ -65,6 +68,7 @@
                                 </div>
                             </div>
 
+                            @can('teacher')
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="d-flex flex-wrap gap-2">
@@ -74,7 +78,7 @@
                                             >
                                         </div>
                                         <div class="course__summery__button">
-                                            <a class="default__button" href="create-сhapter.html"
+                                            <a class="default__button" href="{{route('course.create-chapter',$courseInfo->id )}}"
                                             >Создать раздел</a
                                             >
                                         </div>
@@ -107,6 +111,10 @@
                                     </div>
                                 </div>
                             </div>
+                            @endcan
+
+
+
                             <div
                                 class="tab-content tab__content__wrapper"
                                 id="myTabContent"
@@ -121,102 +129,41 @@
                                         class="accordion content__cirriculum__wrap"
                                         id="accordionExample"
                                     >
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="headingOne">
-                                                <button
-                                                    class="accordion-button"
-                                                    type="button"
-                                                    data-bs-toggle="collapse"
-                                                    data-bs-target="#collapseOne"
-                                                    aria-expanded="true"
-                                                    aria-controls="collapseOne"
-                                                >
-                                                    Раздел первый
-                                                </button>
-                                            </h2>
-                                            <div
-                                                id="collapseOne"
-                                                class="accordion-collapse collapse show"
-                                                aria-labelledby="headingOne"
-                                                data-bs-parent="#accordionExample"
-                                            >
-                                                <div class="accordion-body">
-                                                    <div class="scc__wrap">
-                                                        <div class="scc__info">
-                                                            <i class="icofont-video-alt"></i>
-                                                            <h5>Урок 1</h5>
-                                                        </div>
-                                                        <div class="scc__meta">
-                                                            <!-- <span class="time"> <i class="icofont-clock-time"></i> 15 minutes</span> -->
-                                                            <a href="lesson.html"
-                                                            ><span><i class="icofont-lock"></i></span
-                                                                ></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="scc__wrap">
-                                                        <div class="scc__info">
-                                                            <i class="icofont-video-alt"></i>
-                                                            <h5>Урок 2</h5>
-                                                        </div>
-                                                        <div class="scc__meta">
-                                                            <!-- <span class="time"> <i class="icofont-clock-time"></i> 15 minutes</span> -->
-                                                            <a href="lesson.html"
-                                                            ><span><i class="icofont-lock"></i></span
-                                                                ></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="scc__wrap">
-                                                        <div class="scc__info">
-                                                            <i class="icofont-video-alt"></i>
-                                                            <h5>Урок 3</h5>
-                                                        </div>
-                                                        <div class="scc__meta">
-                                                            <!-- <span class="time"> <i class="icofont-clock-time"></i> 10 minutes</span> -->
-                                                            <a href="lesson.html"
-                                                            ><span><i class="icofont-lock"></i></span
-                                                                ></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="scc__wrap">
-                                                        <div class="scc__info">
-                                                            <i class="icofont-video-alt"></i>
-                                                            <h5>Урок 4</h5>
-                                                        </div>
-                                                        <div class="scc__meta">
-                                                            <!-- <span class="time"> <i class="icofont-clock-time"></i> 15 minutes</span> -->
-                                                            <a href="lesson.html"
-                                                            ><span><i class="icofont-lock"></i></span
-                                                                ></a>
-                                                        </div>
-                                                    </div>
 
-                                                    <div class="scc__wrap">
-                                                        <div class="scc__info">
-                                                            <i class="icofont-file-text"></i>
-                                                            <h5>Задание 1</h5>
-                                                        </div>
-                                                        <div class="scc__meta">
-                                                            <!-- <span class="time"> <i class="icofont-clock-time"></i> 15 minutes</span> -->
-                                                            <a href="lesson.html"
-                                                            ><span><i class="icofont-lock"></i></span
-                                                                ></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="scc__wrap">
-                                                        <div class="scc__info">
-                                                            <i class="icofont-file-text"></i>
-                                                            <h5>Тести 1</h5>
-                                                        </div>
-                                                        <div class="scc__meta">
-                                                            <!-- <span class="time"> <i class="icofont-clock-time"></i> 15 minutes</span> -->
-                                                            <a href="lesson.html"
-                                                            ><span><i class="icofont-lock"></i></span
-                                                                ></a>
+                                        @forelse($courseInfo->sections as $section)
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="headingSection{{ $section->id }}">
+                                                    <button
+                                                        class="accordion-button collapsed"
+                                                        type="button"
+                                                        data-bs-toggle="collapse"
+                                                        data-bs-target="#collapseSection{{ $section->id }}"
+                                                        aria-expanded="false"
+                                                        aria-controls="collapseSection{{ $section->id }}"
+                                                    >
+                                                        {{ $section->title }}
+                                                    </button>
+                                                </h2>
+                                                <div
+                                                    id="collapseSection{{ $section->id }}"
+                                                    class="accordion-collapse collapse"
+                                                    aria-labelledby="headingSection{{ $section->id }}"
+                                                    data-bs-parent="#accordionExample"
+                                                >
+                                                    <div class="accordion-body">
+                                                        <div class="scc__wrap">
+                                                            <div class="scc__info">
+                                                                <i class="icofont-file-text"></i>
+                                                                <h5>Материалы этого раздела будут добавлены позже</h5>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @empty
+                                            <p>Разделов пока нет.</p>
+                                        @endforelse
+
 
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="headingTwo">

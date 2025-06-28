@@ -110,15 +110,25 @@
                                                 </div>
 
                                                 <div class="gridarea__bottom">
-                                                    <a href="instructor-details.html">
+
                                                         <div class="gridarea__small__img">
 
                                                             <div class="gridarea__small__content">
                                                                 <h6>
                                                                     Автор: {{ $course->teacher->first_name }} {{ $course->teacher->last_name }}</h6>
+                                                                <form action="{{route('teacher.delete-course',$course->id )}}" method="POST" onsubmit="return confirm('Вы уверены, что хотите удалить курс');">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button
+                                                                        class="create__course__bottom__button_top mt-2"
+                                                                        type="submit"
+                                                                    >
+                                                                        Удалить курс
+                                                                    </button>
+                                                                </form>
                                                             </div>
                                                         </div>
-                                                    </a>
+
 
                                                 </div>
                                             </div>
@@ -128,7 +138,7 @@
                                     @can('teacher')
                                         Список опубликованных курсов пуст!
                                     @endcan
-                                    Список курсов пуст
+
                                 @endforelse
 
 
@@ -173,15 +183,25 @@
                                                 </div>
 
                                                 <div class="gridarea__bottom">
-                                                    <a href="instructor-details.html">
+
                                                         <div class="gridarea__small__img">
 
                                                             <div class="gridarea__small__content">
                                                                 <h6>
                                                                     Автор: {{ $course->teacher->first_name }} {{ $course->teacher->last_name }}</h6>
+                                                                <form action="{{route('teacher.delete-course', $course->id)}}" method="POST" onsubmit="return confirm('Вы уверены, что хотите удалить курс');">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button
+                                                                        class="create__course__bottom__button_top mt-2"
+                                                                        type="submit"
+                                                                    >
+                                                                        Удалить курс
+                                                                    </button>
+                                                                </form>
                                                             </div>
                                                         </div>
-                                                    </a>
+
 
                                                 </div>
                                             </div>
@@ -232,15 +252,26 @@
                                                 </div>
 
                                                 <div class="gridarea__bottom">
-                                                    <a href="instructor-details.html">
+
                                                         <div class="gridarea__small__img">
 
                                                             <div class="gridarea__small__content">
                                                                 <h6>
                                                                     Автор: {{ $course->teacher->first_name }} {{ $course->teacher->last_name }}</h6>
+
+                                                                <form action="{{route('teacher.delete-course', $course->id)}}" method="POST" onsubmit="return confirm('Вы уверены, что хотите удалить курс');">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button
+                                                                        class="create__course__bottom__button_top mt-2"
+                                                                        type="submit"
+                                                                    >
+                                                                        Удалить курс
+                                                                    </button>
+                                                                </form>
                                                             </div>
                                                         </div>
-                                                    </a>
+
 
                                                 </div>
                                             </div>
@@ -287,9 +318,21 @@
                                         </h3>
                                     </div>
                                     <div class="gridarea__bottom">
-                                        <div class="gridarea__small__content">
+                                        <div class="gridarea__small__content d-flex">
                                             <h6>
                                                 Автор: {{ $course->teacher->first_name }} {{ $course->teacher->last_name }}</h6>
+
+
+                                            <form action="{{ route('student.leave-course', $course->id) }}" method="POST" onsubmit="return confirm('Вы уверены, что хотите покинуть этот курс?');">
+                                                @csrf
+                                                <button
+                                                    class="create__course__bottom__button_top mt-2"
+                                                    type="submit"
+                                                >
+                                                    Покинуть курс
+                                                </button>
+                                            </form>
+
                                         </div>
                                     </div>
                                 </div>

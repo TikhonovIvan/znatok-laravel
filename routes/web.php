@@ -61,5 +61,16 @@ Route::middleware('auth')->group(function () {
     Route::post('/course', [CourseController::class, 'store'])->name('courses.store');
 
 
+    /*Покинуть курс студенту */
+    Route::post('/student/leave-course/{courseId}', [CourseController::class, 'leaveCourse'])->name('student.leave-course');
+
+    /*Удалить полностью курс*/
+    Route::delete('/teacher/delete-course/{id}', [CourseController::class, 'destroy'])->name('teacher.delete-course');
+
+    /*Страница создание и раздела к курсу*/
+    Route::get('/course/{id}/chapter', [CourseController::class, 'createChapter'])->name('course.create-chapter');
+    Route::post('/course/{id}/chapter', [CourseController::class, 'storeChapter'])->name('course.store-chapter');
+
+
 
 });

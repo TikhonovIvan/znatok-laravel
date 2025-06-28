@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Section;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -14,10 +15,20 @@ class CourseController extends Controller
     {
         $user = auth()->user();
 
-        $addedCourses = collect(); // пустая коллекция на случай если не студент
+        $addedCourses = collect(); // на всякий случай пустая коллекция по умолчанию
 
         if ($user->role === 'student') {
-            $addedCourses = $user->courses()->with('teacher')->get();
+            $addedCourses = $user->courses()
+                ->where('status', 'publish') // показываем только опубликованные
+                ->with('teacher')
+                ->get();
+
+            return view('users.course.index-course', [
+                'addedCourses' => $addedCourses,
+                'publishedCourses' => collect(), // чтобы Blade не ругался
+                'pendingCourses' => collect(),
+                'draftCourses' => collect(),
+            ]);
         }
 
         if ($user->role === 'teacher') {
@@ -37,13 +48,12 @@ class CourseController extends Controller
                 'publishedCourses' => $publishedCourses,
                 'pendingCourses' => $pendingCourses,
                 'draftCourses' => $draftCourses,
-                'addedCourses' => $addedCourses // обязательно передаем
+                'addedCourses' => $addedCourses // передаем пустую, чтобы Blade не падал
             ]);
         }
 
-        return view('users.course.index-course', [
-            'addedCourses' => $addedCourses
-        ]);
+        // если вообще непонятно кто — редирект
+        return redirect()->back()->with('error', 'Недостаточно прав');
     }
 
 
@@ -84,15 +94,15 @@ class CourseController extends Controller
 
 
     /*
-     Страница детали курса и создание лекций, тестов, разделов
+     Страница детали курса и создание лекций, тестов, разделов выводит информацию о куре
      */
     public function courseDetails(string $id)
     {
-        $courseInfo = Course::query()->findOrFail($id);
+        $courseInfo = Course::with('sections')->findOrFail($id);
+
         return view('users.course.course-details', [
             'courseInfo' => $courseInfo,
         ]);
-
     }
 
 
@@ -104,9 +114,9 @@ class CourseController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
+
+    /*Страница обновления курса*/
     public function edit(string $id)
     {
         $course = Course::query()->findOrFail($id);
@@ -115,9 +125,8 @@ class CourseController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
+    /*Обновить курс*/
     public function update(Request $request, string $id)
     {
 
@@ -150,6 +159,11 @@ class CourseController extends Controller
             return back()->with('error', 'Курс с таким кодом не найден');
         }
 
+        // проверка статуса
+        if ($course->status !== 'publish') {
+            return back()->with('error', 'Курс еще находится в разработке и недоступен для добавления');
+        }
+
         $user = auth()->user();
 
         if ($user->courses()->where('course_id', $course->id)->exists()) {
@@ -162,11 +176,64 @@ class CourseController extends Controller
     }
 
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    /*Удалить полстью курс со ввсеми данными*/
+    public function destroy($id)
     {
-        //
+        $user = auth()->user();
+
+        // проверяем, что учитель действительно владеет этим курсом
+        $course = Course::where('id', $id)->where('teacher_id', $user->id)->first();
+
+        if (!$course) {
+            return back()->with('error', 'Курс не найден или вы не имеете прав на его удаление');
+        }
+
+        $course->delete();
+
+        return back()->with('success', 'Курс успешно удален');
     }
+
+
+    /*Покинуть курс студенту    */
+    public function leaveCourse(Request $request, $courseId)
+    {
+        $user = auth()->user();
+
+        // проверка, что студент реально подписан на этот курс
+        if (!$user->courses()->where('course_id', $courseId)->exists()) {
+            return back()->with('error', 'Вы не записаны на этот курс');
+        }
+
+        // отвязываем
+        $user->courses()->detach($courseId);
+
+        return back()->with('success', 'Вы успешно покинули курс');
+    }
+
+
+    public function createChapter(string $id)
+    {
+        $courseId = Course::query()->findOrFail($id)->id;
+        return view('users.course.create-сhapter', [
+            'courseId' => $courseId
+        ]);
+    }
+
+    public function storeChapter(Request $request, string $id)
+    {
+        $courseId = Course::query()->findOrFail($id)->id;
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'course_id' => 'required|exists:courses,id'
+        ]);
+
+        Section::query()->create([
+            'title' => $request->title,
+            'course_id' => $request->course_id
+        ]);
+
+        return redirect()->route('course.details-course', $courseId )->with('success', 'Раздел успешно создан');
+    }
+
+
 }

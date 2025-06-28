@@ -51,14 +51,14 @@
                     <div class="headerarea__left">
                         <div class="headerarea__left__logo">
 
-                            <a href="{{route('home')}}" class="fs-2" style="font-weight: 900;">
+                            <a href="{{route('home')}}" class="fs-4 fs-lg-2 " style="font-weight: 900;">
 
                                 <span style="color: #f2277e;">Znatok</span><span style="color: #5f2ded;">-KG</span></a>
                         </div>
 
                     </div>
                 </div>
-                <div class="col-xl-7 col-lg-7 main_menu_wrap">
+                <div class="col-xl-5 col-lg-5 main_menu_wrap">
                     <div class="headerarea__main__menu">
                         <nav>
                             <ul>
@@ -87,15 +87,15 @@
                         </nav>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-6">
+                <div class="col-xl-5 col-lg-5 col-md-6">
                     <div class="headerarea__right">
 
                         @auth
-                        <div class="headerarea__login">
+                        <div class="headerarea__login  ">
                             @if(auth()->user()->role == 'student')
                             <span class="me-3">Статус: Ученик </span>
                             @else
-                                <span class="me-3">Статус: Учитель</span>
+                                <span class="me-3 ">Статус: Учитель</span>
                             @endif
                             <span class="me-3">{{ auth()->user()->last_name }} {{ auth()->user()->first_name }} </span>
                             <a href="{{route('profile')}}"><i class="icofont-user-alt-5"></i></a>

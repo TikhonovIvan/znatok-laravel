@@ -27,4 +27,9 @@ class Course extends Model
         return $this->belongsToMany(User::class);
     }
 
+    public function sections()
+    {
+        return $this->hasMany(Section::class);
+    }
+
 }
