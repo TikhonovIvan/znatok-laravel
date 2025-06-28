@@ -71,6 +71,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/course/{id}/chapter', [CourseController::class, 'createChapter'])->name('course.create-chapter');
     Route::post('/course/{id}/chapter', [CourseController::class, 'storeChapter'])->name('course.store-chapter');
 
+    Route::get('/course/edit/{id}', [CourseController::class, 'editChapter'])->name('course.edit-chapter');
+    Route::put('/course/edit/{id}', [CourseController::class, 'updateChapter'])->name('course.update-chapter');
+
+    /*Удалить раздел в курсе*/
+    Route::delete('/course/edit/{id}', [CourseController::class, 'destroyChapter'])->name('course.destroy-chapter');
+
+
+
 
 
 });

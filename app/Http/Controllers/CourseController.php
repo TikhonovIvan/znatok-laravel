@@ -211,6 +211,7 @@ class CourseController extends Controller
     }
 
 
+    /*Форма создание раздела*/
     public function createChapter(string $id)
     {
         $courseId = Course::query()->findOrFail($id)->id;
@@ -219,6 +220,7 @@ class CourseController extends Controller
         ]);
     }
 
+    /*Метод создание раздела*/
     public function storeChapter(Request $request, string $id)
     {
         $courseId = Course::query()->findOrFail($id)->id;
@@ -235,5 +237,48 @@ class CourseController extends Controller
         return redirect()->route('course.details-course', $courseId )->with('success', 'Раздел успешно создан');
     }
 
+    /*Форма редактирование раздела */
+    public function editChapter(string $id)
+    {
+        $chapter = Section::query()->findOrFail($id);
+        return view('users.course.edit-сhapter', [
+            'chapter' =>  $chapter
+        ]);
+    }
+
+    /*Метод обновления раздела*/
+    public function updateChapter(Request $request, string $id)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'course_id' => 'required|exists:courses,id'
+        ]);
+
+        $section = Section::findOrFail($id);
+
+        $section->update([
+            'title' => $request->title,
+            'course_id' => $request->course_id
+        ]);
+
+        return redirect()
+            ->route('course.details-course', $request->course_id)
+            ->with('success', 'Раздел успешно обновлён');
+    }
+
+
+
+    public function destroyChapter($id)
+    {
+        $section = Section::findOrFail($id);
+
+        $courseId = $section->course_id; // чтобы после удаления вернуть пользователя на страницу курса
+
+        $section->delete();
+
+        return redirect()
+            ->route('course.details-course', $courseId)
+            ->with('success', 'Раздел успешно удалён');
+    }
 
 }
