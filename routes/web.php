@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -88,7 +89,15 @@ Route::middleware('auth')->group(function () {
     Route::put('/course/lesson/edit/{id}', [LessonController::class, 'update'])->name('course.lesson.update');
     Route::get('/course/lesson/show/{id}', [LessonController::class, 'show'])->name('course.lesson.show');
 
+    /*Удаление лекции*/
     Route::delete('/course/lesson/delete/{id}', [LessonController::class, 'destroy'])->name('course.lesson.delete');
+
+    /*Создание видео материала*/
+    Route::get('/course/{course}/lesson/video/create', [VideoController::class, 'create'])->name('course.video.create-lesson');
+    Route::post('/course/{course}/lesson/video/create', [VideoController::class, 'store'])->name('course.video.store-lesson');
+
+
+
 
 
 

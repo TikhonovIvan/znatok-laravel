@@ -84,7 +84,7 @@
                         <div class="row">
                             <div class="col-xl-8 col-lg-8 col-md-6 col-12">
                                 <div class="create__course__bottom__button">
-                                    <button  class="create__course__bottom__button_top" type="submit">Создать лекцию</button>
+                                    <button  class="create__course__bottom__button_top"   type="submit">Создать лекцию</button>
                                 </div>
                             </div>
                         </div>

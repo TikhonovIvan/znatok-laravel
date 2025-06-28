@@ -100,8 +100,7 @@ class CourseController extends Controller
      */
     public function courseDetails(string $id)
     {
-        $courseInfo = Course::with('sections.lectures')->findOrFail($id);
-
+        $courseInfo = Course::with('sections.lectures', 'sections.videos')->findOrFail($id);
 
         return view('users.course.course-details', [
             'courseInfo' => $courseInfo,
