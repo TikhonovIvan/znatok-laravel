@@ -98,8 +98,10 @@
                                                 <div class="gridarea__list">
                                                     <ul>
                                                         <li>
-                                                            <i class="icofont-book-alt"></i> 29 Lesson
+                                                            <i class="icofont-book-alt"></i>
+                                                            {{ $course->sections->flatMap->lectures->count() }} лек.
                                                         </li>
+
 
                                                     </ul>
                                                 </div>
@@ -111,9 +113,9 @@
 
                                                 <div class="gridarea__bottom">
 
-                                                        <div class="gridarea__small__img">
+                                                        <div class="gridarea__small__img flex-wrap">
 
-                                                            <div class="gridarea__small__content">
+                                                            <div class="gridarea__small__content ">
                                                                 <h6>
                                                                     Автор: {{ $course->teacher->first_name }} {{ $course->teacher->last_name }}</h6>
                                                                 <form action="{{route('teacher.delete-course',$course->id )}}" method="POST" onsubmit="return confirm('Вы уверены, что хотите удалить курс');">
@@ -126,7 +128,9 @@
                                                                         Удалить курс
                                                                     </button>
                                                                 </form>
+
                                                             </div>
+
                                                         </div>
 
 
@@ -171,8 +175,10 @@
                                                 <div class="gridarea__list">
                                                     <ul>
                                                         <li>
-                                                            <i class="icofont-book-alt"></i> 29 Lesson
+                                                            <i class="icofont-book-alt"></i>
+                                                            {{ $course->sections->flatMap->lectures->count() }} лек.
                                                         </li>
+
 
                                                     </ul>
                                                 </div>
@@ -184,7 +190,7 @@
 
                                                 <div class="gridarea__bottom">
 
-                                                        <div class="gridarea__small__img">
+                                                        <div class="gridarea__small__img flex-wrap">
 
                                                             <div class="gridarea__small__content">
                                                                 <h6>
@@ -200,7 +206,9 @@
                                                                     </button>
                                                                 </form>
                                                             </div>
+
                                                         </div>
+
 
 
                                                 </div>
@@ -240,8 +248,10 @@
                                                 <div class="gridarea__list">
                                                     <ul>
                                                         <li>
-                                                            <i class="icofont-book-alt"></i> 29 Lesson
+                                                            <i class="icofont-book-alt"></i>
+                                                            {{ $course->sections->flatMap->lectures->count() }} лек.
                                                         </li>
+
 
                                                     </ul>
                                                 </div>
@@ -253,12 +263,11 @@
 
                                                 <div class="gridarea__bottom">
 
-                                                        <div class="gridarea__small__img">
+                                                        <div class="gridarea__small__img ">
 
                                                             <div class="gridarea__small__content">
                                                                 <h6>
                                                                     Автор: {{ $course->teacher->first_name }} {{ $course->teacher->last_name }}</h6>
-
                                                                 <form action="{{route('teacher.delete-course', $course->id)}}" method="POST" onsubmit="return confirm('Вы уверены, что хотите удалить курс');">
                                                                     @csrf
                                                                     @method('DELETE')
@@ -269,7 +278,9 @@
                                                                         Удалить курс
                                                                     </button>
                                                                 </form>
+
                                                             </div>
+
                                                         </div>
 
 
@@ -308,8 +319,10 @@
                                     <div class="gridarea__list">
                                         <ul>
                                             <li>
-                                                <i class="icofont-book-alt"></i> 29 Lesson
+                                                <i class="icofont-book-alt"></i>
+                                                {{ $course->sections->flatMap->lectures->count() }} лек.
                                             </li>
+
                                         </ul>
                                     </div>
                                     <div class="gridarea__heading">
@@ -318,10 +331,9 @@
                                         </h3>
                                     </div>
                                     <div class="gridarea__bottom">
-                                        <div class="gridarea__small__content d-flex">
+                                        <div class="gridarea__small__content ">
                                             <h6>
                                                 Автор: {{ $course->teacher->first_name }} {{ $course->teacher->last_name }}</h6>
-
 
                                             <form action="{{ route('student.leave-course', $course->id) }}" method="POST" onsubmit="return confirm('Вы уверены, что хотите покинуть этот курс?');">
                                                 @csrf
@@ -333,7 +345,9 @@
                                                 </button>
                                             </form>
 
+
                                         </div>
+
                                     </div>
                                 </div>
                             </div>

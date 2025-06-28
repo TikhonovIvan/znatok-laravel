@@ -22,14 +22,21 @@ class Course extends Model
         return $this->belongsTo(User::class, 'teacher_id');
     }
 
-    public function students()
-    {
-        return $this->belongsToMany(User::class);
-    }
+
 
     public function sections()
     {
         return $this->hasMany(Section::class);
     }
+
+    public function students()
+    {
+        return $this->belongsToMany(User::class, 'course_user');
+    }
+
+    public function lectures() {
+        return $this->hasMany(Lectures::class);
+    }
+
 
 }

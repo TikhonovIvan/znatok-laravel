@@ -36,7 +36,7 @@
 
             <div class="row">
 
-                <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12" data-aos="fade-up">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 col-12" data-aos="fade-up">
                     <div class="lesson__meterials__wrap">
                         <div class="aboutarea__content__wraper__5">
                             <div class="section__title">

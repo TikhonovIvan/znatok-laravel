@@ -14013,7 +14013,7 @@ Dark Mode
 
 .create__course__bottom__button_top {
   background: var(--primaryColor);
-  color: var(--whiteColor);
+  color: #FFF ;
   display: inline-block;
   text-align: center;
   padding: 10px;

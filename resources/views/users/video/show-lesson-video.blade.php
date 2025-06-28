@@ -7,7 +7,7 @@
 
     <div class="tution sp_bottom_100 sp_top_50">
         <div class="container-fluid full__width__padding">
-            <div class="row">
+            <div class="row d-flex justify-content-center">
 
 
                 <div

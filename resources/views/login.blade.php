@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="login__form d-flex justify-content-between flex-wrap gap-2">
                                     <div class="form__check">
-                                        <input id="forgot" type="checkbox" required>
+                                        <input id="forgot" type="checkbox" >
                                         <label for="forgot"> Запомнить меня</label>
                                     </div>
                                     <div class="text-end login__form__link">

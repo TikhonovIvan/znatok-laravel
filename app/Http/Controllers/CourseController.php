@@ -100,12 +100,22 @@ class CourseController extends Controller
      */
     public function courseDetails(string $id)
     {
-        $courseInfo = Course::with('sections.lectures', 'sections.videos')->findOrFail($id);
+        $courseInfo = Course::with(['sections.lectures', 'sections.videos', 'students'])->findOrFail($id);
+
+        $totalLectures = $courseInfo->sections->sum(fn($section) => $section->lectures->count());
+        $totalStudents = $courseInfo->students->count();
+
+        // проверить, есть ли этот пользователь в списке студентов курса
+        $hasAccess = $courseInfo->students->contains(auth()->id());
 
         return view('users.course.course-details', [
-            'courseInfo' => $courseInfo,
+            'courseInfo'      => $courseInfo,
+            'totalLectures'   => $totalLectures,
+            'totalStudents'   => $totalStudents,
+            'hasAccess'       => $hasAccess,  // передаем в Blade
         ]);
     }
+
 
 
     /**

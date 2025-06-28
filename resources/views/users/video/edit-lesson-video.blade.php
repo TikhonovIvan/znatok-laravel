@@ -11,7 +11,7 @@
                 <div class="col-xl-12">
                     <div class="breadcrumb__content__wraper" data-aos="fade-up">
                         <div class="breadcrumb__title">
-                            <h2 class="heading">Создать видео материал</h2>
+                            <h2 class="heading">Обновить видео материал</h2>
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                             <div class="accordion" id="accordionExample">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
-                                        Добавить видео материала
+                                        Обновить видео материала
                                     </h2>
                                     <div
                                         id="collapseOne"
@@ -128,7 +128,7 @@
                         <div class="row">
                             <div class="col-xl-8 col-lg-8 col-md-6 col-12">
                                 <div class="create__course__bottom__button">
-                                    <button  type="submit" class="create__course__bottom__button_top" >Обновить видео материал</button>
+                                    <button  type="submit" class="create__course__bottom__button_top"  >Обновить видео </button>
                                 </div>
                             </div>
                         </div>

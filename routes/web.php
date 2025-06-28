@@ -26,6 +26,7 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthController::class, 'loginAuth'])->name('auth.login');
 });
 
+Route::get('/courses/details/{id}', [CourseController::class, 'courseDetails'])->name('course.details-course');
 
 
 /*======================================================
@@ -52,7 +53,7 @@ Route::middleware('auth')->group(function () {
 
 
     /*Детали курса*/
-    Route::get('/courses/details/{id}', [CourseController::class, 'courseDetails'])->name('course.details-course');
+//    Route::get('/courses/details/{id}', [CourseController::class, 'courseDetails'])->name('course.details-course');
 
     /*Добавление курса от студента*/
     Route::post('/student/add-course', [CourseController::class, 'addCourseByCode'])->name('student.add-course');

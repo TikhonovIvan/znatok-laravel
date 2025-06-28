@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 
+
+
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
         if (
