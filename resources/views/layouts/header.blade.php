@@ -45,8 +45,8 @@
 <!-- Шапка сайта start -->
 <header>
     <div class="headerarea headerarea__2 header__sticky header__area">
-        <div class="container desktop__menu__wrapper">
-            <div class="row">
+        <div class="container desktop__menu__wrapper ">
+            <div class="row ">
                 <div class="col-xl-2 col-lg-2 col-md-6">
                     <div class="headerarea__left">
                         <div class="headerarea__left__logo">
@@ -58,7 +58,7 @@
 
                     </div>
                 </div>
-                <div class="col-xl-5 col-lg-5 main_menu_wrap">
+                <div class="col-xl-6 col-lg-6 main_menu_wrap ">
                     <div class="headerarea__main__menu">
                         <nav>
                             <ul>
@@ -80,14 +80,14 @@
                                     </a>
                                 </li>
 
-                                <li class="mega__menu position-static">
+                                <li class="mega__menu position-static d-none">
                                     <a class="headerarea__has__dropdown" href="blog.html">Блог </a>
                                 </li>
                             </ul>
                         </nav>
                     </div>
                 </div>
-                <div class="col-xl-5 col-lg-5 col-md-6">
+                <div class="col-xl-4 col-lg-4 col-md-6">
                     <div class="headerarea__right">
 
                         @auth
@@ -199,14 +199,15 @@
 <!-- Зафиксировать тему -->
 
 
-<div class="container mt-5  ">
+<div class="container mt-5">
     <div class="row d-flex justify-content-center">
         <div class="col-6 text-center">
+
             @if ($errors->any())
-                <div class="alert alert-dismissible  show" style="background: #5f2ded; color: #fff" role="alert">
+                <div class="alert alert-dismissible show" style="background: #5f2ded; color: #fff" role="alert">
                     <ul class="list-unstyled">
                         @foreach ($errors->all() as $error)
-                            <li> <strong>{{ $error }}</strong> </li>
+                            <li><strong>{{ $error }}</strong></li>
                         @endforeach
                     </ul>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -214,14 +215,23 @@
             @endif
 
             @if (session('success'))
-                <div class="alert  alert-dismissible  show" style="background: #5f2ded; color: #fff"  role="alert">
-                    <strong>{{session('success')}}</strong>
+                <div class="alert alert-dismissible show" style="background: #5f2ded; color: #fff" role="alert">
+                    <strong>{{ session('success') }}</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
+
+            @if (session('error'))
+                <div class="alert alert-dismissible show" style="background: #dc3545; color: #fff" role="alert">
+                    <strong>{{ session('error') }}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
         </div>
     </div>
 </div>
+
 
 {{--<script>--}}
 {{--    document.addEventListener('DOMContentLoaded', function() {--}}

@@ -256,12 +256,12 @@
                                                                     <div class="scc__info">
                                                                         <i class="icofont-video-alt"></i>
                                                                         <h5>
-                                                                            <a href="{{ $video->url }}" target="_blank">{{ $video->title }}</a>
+                                                                            <a href="{{route('course.video.show-lesson',$video->id  )}}" target="_blank">{{ $video->title }}</a>
                                                                         </h5>
 
                                                                         <span class="d-flex justify-content-center align-items-center ms-5 bg-top-span"
                                                                               style="width: 40px; height: 40px;">
-                                                                            <a href="" class="text-primary" title="Редактировать">
+                                                                            <a href="{{ route('course.video.edit-lesson',$video->id ) }}" class="text-primary" title="Редактировать">
                                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                                                                      class="bi bi-pencil" viewBox="0 0 16 16">
                                                                                     <path
@@ -271,7 +271,7 @@
                                                                         </span>
                                                                         <span class="d-flex justify-content-center align-items-center bg-top-span"
                                                                               style="width: 40px; height: 40px">
-                                                                            <form action=""
+                                                                            <form action="{{route('course.video.delete-lesson', $video->id)}}"
                                                                                   method="POST"
                                                                                   onsubmit="return confirm('Вы уверены, что хотите удалить видеоурок?');">
                                                                                 @csrf

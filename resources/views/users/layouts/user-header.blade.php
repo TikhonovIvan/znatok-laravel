@@ -1,7 +1,7 @@
 <div class="col-xl-3 col-lg-3 col-md-12">
     <div class="dashboard__inner sticky-top">
         <div class="dashboard__nav__title">
-            <h6>Добро пожаловать, {{ auth()->user()->last_name }} {{ auth()->user()->first_name }}</h6>
+            <h6>Добро пожаловать, <br><br>  <span >{{ auth()->user()->last_name }} {{ auth()->user()->first_name }}</span></h6>
         </div>
         <div class="dashboard__nav">
             <ul>

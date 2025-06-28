@@ -868,120 +868,57 @@
             </div>
 
             <div class="row grid" data-aos="fade-up">
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 grid-item filter1 filter3">
-                    <div class="gridarea__wraper card-container" style="height: 460px;">
-                        <div class="gridarea__img">
-                            <a href="course-details.html">
-                                <img loading="lazy" src="img/grid/grid_1.png" alt="grid" />
-                            </a>
-                            <div class="gridarea__small__button">
-                                <div class="grid__badge">Данные и технологии</div>
-                            </div>
-                        </div>
-                        <div class="gridarea__content card-content">
-                            <div class="gridarea__list">
-                                <ul>
-                                    <li><i class="icofont-book-alt"></i> 23 Урока</li>
-                                    <li><i class="icofont-clock-time"></i> 1 час 30 мин</li>
-                                </ul>
-                            </div>
-                            <div class="gridarea__heading">
-                                <h3>
-                                    <a href="course-details.html">Данные и технологии</a>
-                                </h3>
-                            </div>
-
-                            <div class="gridarea__bottom card-footer">
-                                <a href="instructor-details.html">
-                                    <div class="gridarea__small__img">
-                                        <img loading="lazy" src="img/grid/grid_small_1.jpg" alt="grid" />
-                                        <div class="gridarea__small__content">
-                                            <h6>Micle Jhon</h6>
-                                        </div>
-                                    </div>
+                @forelse($courses as $course)
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 grid-item filter1 filter3">
+                        <div class="gridarea__wraper card-container" style="height: 460px;">
+                            <div class="gridarea__img">
+                                <a href="">
+                                    <img loading="lazy"
+                                         src="{{ asset('uploads/' . $course->cover) }}"
+                                         alt="{{ $course->title }}"
+                                         style="object-fit:cover; height:220px; width:100%;"
+                                    />
                                 </a>
+                                <div class="gridarea__small__button">
+                                    <div class="grid__badge">{{ $course->category }}</div>
+                                </div>
+                            </div>
+                            <div class="gridarea__content card-content">
+                                <div class="gridarea__list">
+                                    <ul>
+                                        <li>
+                                            <i class="icofont-book-alt"></i>
+                                            {{
+                                                $course->sections->sum(fn($section) => $section->lectures->count())
+                                            }} Лекций
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="gridarea__heading">
+                                    <h3>
+                                        <a href="{{ route('course.details-course', $course->id) }}">
+                                            {{ $course->title }}
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div class="gridarea__bottom card-footer">
+                                    <a href="#">
+                                        <div class="gridarea__small__img">
+
+                                            <div class="gridarea__small__content">
+                                                <h6>Автор: {{ $course->teacher->first_name }} {{ $course->teacher->last_name }}</h6>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 grid-item filter1 filter3">
-                    <div class="gridarea__wraper card-container" style="height: 460px;">
-                        <div class="gridarea__img">
-                            <a href="course-details.html">
-                                <img loading="lazy" src="img/grid/grid_1.png" alt="grid" />
-                            </a>
-                            <div class="gridarea__small__button">
-                                <div class="grid__badge">Данные и технологии</div>
-                            </div>
-                        </div>
-                        <div class="gridarea__content card-content">
-                            <div class="gridarea__list">
-                                <ul>
-                                    <li><i class="icofont-book-alt"></i> 23 Урока</li>
-                                    <li><i class="icofont-clock-time"></i> 1 час 30 мин</li>
-                                </ul>
-                            </div>
-                            <div class="gridarea__heading">
-                                <h3>
-                                    <a href="course-details.html">Данные и технологии</a>
-                                </h3>
-                            </div>
-
-                            <div class="gridarea__bottom card-footer">
-                                <a href="instructor-details.html">
-                                    <div class="gridarea__small__img">
-                                        <img loading="lazy" src="img/grid/grid_small_1.jpg" alt="grid" />
-                                        <div class="gridarea__small__content">
-                                            <h6>Micle Jhon</h6>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 grid-item filter1 filter3">
-                    <div class="gridarea__wraper card-container" style="height: 460px;">
-                        <div class="gridarea__img">
-                            <a href="course-details.html">
-                                <img loading="lazy" src="img/grid/grid_1.png" alt="grid" />
-                            </a>
-                            <div class="gridarea__small__button">
-                                <div class="grid__badge">Данные и технологии</div>
-                            </div>
-                        </div>
-                        <div class="gridarea__content card-content">
-                            <div class="gridarea__list">
-                                <ul>
-                                    <li><i class="icofont-book-alt"></i> 23 Урока</li>
-                                    <li><i class="icofont-clock-time"></i> 1 час 30 мин</li>
-                                </ul>
-                            </div>
-                            <div class="gridarea__heading">
-                                <h3>
-                                    <a href="course-details.html">Данные и технологии</a>
-                                </h3>
-                            </div>
-
-                            <div class="gridarea__bottom card-footer">
-                                <a href="instructor-details.html">
-                                    <div class="gridarea__small__img">
-                                        <img loading="lazy" src="img/grid/grid_small_1.jpg" alt="grid" />
-                                        <div class="gridarea__small__content">
-                                            <h6>Micle Jhon</h6>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
+                @empty
+                    <p>Пока нет опубликованных курсов.</p>
+                @endforelse
             </div>
+
         </div>
     </div>
     <!-- Список курсов__end -->
@@ -1102,7 +1039,7 @@
     <!-- Опытный учителя__end-->
 
     <!-- Новости_или_блог__start -->
-    <div class="blogarea__2 sp_top_100 sp_bottom_100">
+    <div class="blogarea__2 sp_top_100 sp_bottom_100 d-none">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12" data-aos="fade-up">

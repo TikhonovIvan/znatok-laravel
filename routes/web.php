@@ -96,6 +96,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/course/{course}/lesson/video/create', [VideoController::class, 'create'])->name('course.video.create-lesson');
     Route::post('/course/{course}/lesson/video/create', [VideoController::class, 'store'])->name('course.video.store-lesson');
 
+    /*Редактирование видео материала*/
+    Route::get('/course/lesson/video/edit/{id}', [VideoController::class, 'edit'])->name('course.video.edit-lesson');
+    Route::put('/course/lesson/video/edit/{id}', [VideoController::class, 'update'])->name('course.video.update-lesson');
+    Route::get('/course/lesson/video/show/{id}', [VideoController::class, 'show'])->name('course.video.show-lesson');
+
+    Route::delete('/course/lesson/video/delete/{id}', [VideoController::class, 'destroy'])->name('course.video.delete-lesson');
+
+
+
 
 
 

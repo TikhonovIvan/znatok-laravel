@@ -11,6 +11,9 @@ class Video extends Model
         'url',
         'section_id',
     ];
-
+    public function section()
+    {
+        return $this->belongsTo(Section::class);
+    }
 
 }
