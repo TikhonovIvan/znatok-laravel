@@ -867,9 +867,9 @@
                 </div>
             </div>
 
-            <div class="row grid" data-aos="fade-up">
+            <div class="row grid " data-aos="fade-up">
                 @forelse($courses as $course)
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 grid-item filter1 filter3">
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 grid-item filter1 filter3 ">
                         <div class="gridarea__wraper card-container" style="height: 460px;">
                             <div class="gridarea__img">
                                 <a href="">
@@ -913,7 +913,13 @@
                                 </div>
                             </div>
                         </div>
+                        <div >
+                            {{ $courses->links('vendor.pagination.custom') }}
+                        </div>
                     </div>
+
+
+
                 @empty
                     <p>Пока нет опубликованных курсов.</p>
                 @endforelse

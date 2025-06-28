@@ -15,7 +15,7 @@ class HomeController extends Controller
         $courses = Course::with('teacher')
             ->where('status', 'publish')
             ->latest()
-            ->get();
+            ->paginate(1); // 6 курсов на страницу
 
         return view('home', [
             'courses' => $courses,
