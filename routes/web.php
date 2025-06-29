@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
@@ -104,11 +105,23 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/course/lesson/video/delete/{id}', [VideoController::class, 'destroy'])->name('course.video.delete-lesson');
 
+    /*Создание теста*/
+    Route::get('/course/{course}/lesson/test/create', [TestController::class, 'create'])->name('course.test.create');
+    Route::post('/course/{course}/lesson/test/create', [TestController::class, 'store'])->name('course.test.store');
 
+    /*Редактирование теста*/
+    Route::get('/course/lesson/test/edit/{id}', [TestController::class, 'edit'])->name('course.test.edit');
+    Route::put('/course/lesson/test/edit/{id}', [TestController::class, 'update'])->name('course.test.update');
 
+    /*Просмотр теста */
+    Route::get('/course/lesson/test/show/{id}', [TestController::class, 'show'])->name('course.test.show');
 
+    /*Удалить курс*/
+    Route::delete('/course/lesson/test/delete/{id}', [TestController::class, 'destroy'])->name('course.test.delete');
 
-
+    /*Создание вопросов и ответов к тесту*/
+    Route::get('/course/{course}/lesson/questions/create', [TestController::class, 'create'])->name('course.test.create');
+    Route::post('/course/{course}/lesson/questions/create', [TestController::class, 'store'])->name('course.test.store');
 
 
 

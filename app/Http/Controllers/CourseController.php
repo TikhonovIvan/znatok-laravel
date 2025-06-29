@@ -100,7 +100,9 @@ class CourseController extends Controller
      */
     public function courseDetails(string $id)
     {
-        $courseInfo = Course::with(['sections.lectures', 'sections.videos', 'students'])->findOrFail($id);
+        $courseInfo = Course::with(['sections.lectures', 'sections.videos', 'sections.tests', 'students'])
+            ->findOrFail($id);
+
 
         $totalLectures = $courseInfo->sections->sum(fn($section) => $section->lectures->count());
         $totalStudents = $courseInfo->students->count();

@@ -104,7 +104,8 @@
                                                 </a>
                                             </div>
                                             <div class="course__summery__button">
-                                                <a class="default__button" href="create-test.html">
+                                                <a class="default__button"
+                                                   href="{{route('course.test.create', $courseInfo->id)}}">
                                                     Создать тест
                                                 </a>
                                             </div>
@@ -157,7 +158,8 @@
                                                                 style="width: 40px ; height: 40px ">
                                                                     <a href="{{route('course.edit-chapter',$section->id )}}"
                                                                        class="text-primary" title="Редактировать">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                             width="16"
                                                                              height="16" fill="currentColor"
                                                                              class="bi bi-pencil" viewBox="0 0 16 16">
                                                                             <path
@@ -177,7 +179,8 @@
                                                                     <button type="submit"
                                                                             class="btn p-0 border-0 bg-transparent text-danger"
                                                                             title="Удалить">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                             width="16"
                                                                              height="16" fill="currentColor"
                                                                              class="bi bi-trash" viewBox="0 0 16 16">
                                                                             <path
@@ -202,7 +205,8 @@
                                                     <div class="accordion-body">
                                                         @forelse($section->lectures as $lecture)
                                                             <div class="scc__wrap">
-                                                                <div class="scc__info d-flex justify-content-between align-items-center">
+                                                                <div
+                                                                    class="scc__info d-flex justify-content-between align-items-center">
                                                                     <i class="icofont-file-text"></i>
 
                                                                     @can('teacher')
@@ -217,7 +221,8 @@
                                                                                 <h5>{{ $lecture->title }}</h5>
                                                                             </a>
                                                                         @else
-                                                                            <h5 class="text-muted" style="cursor: not-allowed;">
+                                                                            <h5 class="text-muted"
+                                                                                style="cursor: not-allowed;">
                                                                                 {{ $lecture->title }}
                                                                             </h5>
                                                                             <i class="icofont-lock"></i>
@@ -228,27 +233,38 @@
                                                                         <span
                                                                             class="d-flex justify-content-center align-items-center ms-5 bg-top-span"
                                                                             style="width: 40px; height: 40px;">
-                                                                                <a href="{{ route('course.lesson.edit', $lecture->id) }}" class="text-primary"
+                                                                                <a href="{{ route('course.lesson.edit', $lecture->id) }}"
+                                                                                   class="text-primary"
                                                                                    title="Редактировать">
-                                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                                         height="16" fill="currentColor"
-                                                                                         class="bi bi-pencil" viewBox="0 0 16 16">
+                                                                                    <svg
+                                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                                        width="16"
+                                                                                        height="16" fill="currentColor"
+                                                                                        class="bi bi-pencil"
+                                                                                        viewBox="0 0 16 16">
                                                                             <path
                                                                                 d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
                                                                         </svg>
                                                                                 </a>
                                                                             </span>
-                                                                                                                    <span
-                                                                                                                        class="d-flex justify-content-center align-items-center bg-top-span"
-                                                                                                                        style="width: 40px; height: 40px;">
-                                                                                <form action="{{ route('course.lesson.delete', $lecture->id) }}" method="POST"
-                                                                                      onsubmit="return confirm('Вы уверены, что хотите удалить лекцию?');">
+                                                                        <span
+                                                                            class="d-flex justify-content-center align-items-center bg-top-span"
+                                                                            style="width: 40px; height: 40px;">
+                                                                                <form
+                                                                                    action="{{ route('course.lesson.delete', $lecture->id) }}"
+                                                                                    method="POST"
+                                                                                    onsubmit="return confirm('Вы уверены, что хотите удалить лекцию?');">
                                                                                     @csrf
                                                                                     @method('DELETE')
-                                                                                    <button type="submit" class="btn p-0 border-0 bg-transparent text-danger"
+                                                                                    <button type="submit"
+                                                                                            class="btn p-0 border-0 bg-transparent text-danger"
                                                                                             title="Удалить">
-                                                                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                                                                           class="bi bi-trash" viewBox="0 0 16 16">
+                                                                                      <svg
+                                                                                          xmlns="http://www.w3.org/2000/svg"
+                                                                                          width="16" height="16"
+                                                                                          fill="currentColor"
+                                                                                          class="bi bi-trash"
+                                                                                          viewBox="0 0 16 16">
                                                                                               <path
                                                                                                   d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5
                                                                                                    m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5
@@ -282,22 +298,26 @@
 
                                                         @forelse($section->videos as $video)
                                                             <div class="scc__wrap">
-                                                                <div class="scc__info d-flex justify-content-between align-items-center">
+                                                                <div
+                                                                    class="scc__info d-flex justify-content-between align-items-center">
                                                                     <i class="icofont-video-alt"></i>
 
                                                                     @can('teacher')
                                                                         {{-- Преподаватель видит всё открыто --}}
-                                                                        <a href="{{ route('course.video.show-lesson', $video->id) }}" target="_blank">
+                                                                        <a href="{{ route('course.video.show-lesson', $video->id) }}"
+                                                                           target="_blank">
                                                                             <h5>{{ $video->title }}</h5>
                                                                         </a>
                                                                     @else
                                                                         {{-- Для студента проверяем доступ --}}
                                                                         @if($hasAccess)
-                                                                            <a href="{{ route('course.video.show-lesson', $video->id) }}" target="_blank">
+                                                                            <a href="{{ route('course.video.show-lesson', $video->id) }}"
+                                                                               target="_blank">
                                                                                 <h5>{{ $video->title }}</h5>
                                                                             </a>
                                                                         @else
-                                                                            <h5 class="text-muted" style="cursor: not-allowed;">
+                                                                            <h5 class="text-muted"
+                                                                                style="cursor: not-allowed;">
                                                                                 {{ $video->title }}
                                                                             </h5>
                                                                             <i class="icofont-lock"></i>
@@ -365,6 +385,114 @@
                                                                 </div>
                                                             </div>
                                                         @endforelse
+
+
+                                                        @forelse($section->tests as $test)
+                                                            <div class="scc__wrap">
+                                                                <div
+                                                                    class="scc__info d-flex justify-content-between align-items-center">
+                                                                    <i class="icofont-test-bulb"></i>
+
+                                                                    @can('teacher')
+                                                                        {{-- Преподаватель видит ссылку на прохождение/редактирование --}}
+                                                                        <a href="{{route('course.test.show', $test->id)}}">
+                                                                            <h5>{{ $test->title }}</h5>
+                                                                        </a>
+                                                                    @else
+                                                                        {{-- Студент: только если есть доступ --}}
+                                                                        @if($hasAccess)
+                                                                            <a href="{{route('course.test.show', $test->id)}}">
+                                                                                <h5>{{ $test->title }}</h5>
+                                                                            </a>
+                                                                        @else
+                                                                            <h5 class="text-muted"
+                                                                                style="cursor: not-allowed;">{{ $test->title }}</h5>
+                                                                            <i class="icofont-lock"></i>
+                                                                        @endif
+                                                                    @endcan
+
+                                                                    @can('teacher')
+                                                                        <span
+                                                                            class="d-flex justify-content-center align-items-center ms-5 bg-top-span"
+                                                                            style="width: 40px; height: 40px;">
+                                                                            {{-- Кнопка редактирования--}}
+                                                                                    <a href="{{route('course.test.edit', $test->id)}}"
+                                                                                       class="text-primary"
+                                                                                       title="Редактировать">
+                                                                                        <svg
+                                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                                            width="16" height="16"
+                                                                                            fill="currentColor"
+                                                                                            class="bi bi-pencil"
+                                                                                            viewBox="0 0 16 16">
+                                                                                            <path
+                                                                                                d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5
+                                                                                                13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5
+                                                                                                3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5
+                                                                                                a.5.5 0 0 1 .5.5v.5h.293zm-9.761
+                                                                                                5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5
+                                                                                                0 0 1 5 12.5V12h-.5a.5.5 0 0
+                                                                                                1-.5-.5V11h-.5a.5.5 0 0
+                                                                                                1-.468-.325"/>
+                                                                                        </svg>
+                                                                                    </a>
+                                                                                </span>
+                                                                        <span
+                                                                            class="d-flex justify-content-center align-items-center bg-top-span"
+                                                                            style="width: 40px; height: 40px;">
+                                                                            {{-- Кнопка удаления--}}
+                                                                            <form
+                                                                                action="{{route('course.test.delete',  $test->id)}}"
+                                                                                method="POST"
+                                                                                onsubmit="return confirm('Вы уверены, что хотите удалить тест?');">
+                                                                                @csrf
+                                                                                @method('DELETE')
+                                                                                <button type="submit"
+                                                                                        class="btn p-0 border-0 bg-transparent text-danger"
+                                                                                        title="Удалить">
+                                                                                    <svg
+                                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                                        width="16" height="16"
+                                                                                        fill="currentColor"
+                                                                                        class="bi bi-trash"
+                                                                                        viewBox="0 0 16 16">
+                                                                                        <path
+                                                                                            d="M5.5 5.5A.5.5 0 0
+                                                                                            1 6 6v6a.5.5 0 0 1-1
+                                                                                            0V6a.5.5 0 0 1 .5-.5m2.5
+                                                                                            0a.5.5 0 0 1 .5.5v6a.5.5
+                                                                                            0 0 1-1 0V6a.5.5 0 0 1
+                                                                                            .5-.5m3 .5a.5.5 0 0 0-1
+                                                                                            0v6a.5.5 0 0 0 1 0z"/>
+                                                                                        <path
+                                                                                            d="M14.5 3a1 1 0 0
+                                                                                            1-1 1H13v9a2 2 0 0
+                                                                                            1-2 2H5a2 2 0 0
+                                                                                            1-2-2V4h-.5a1 1 0 0
+                                                                                            1-1-1V2a1 1 0 0
+                                                                                            1 1-1H6a1 1 0 0 1
+                                                                                            1 1h2a1 1 0 0 1 1
+                                                                                            1h3.5a1 1 0 0 1 1
+                                                                                            1zM4.118 4 4 4.059V13a1
+                                                                                            1 0 0 0 1 1h6a1 1 0 0
+                                                                                            0 1-1V4.059L11.882
+                                                                                            4zM2.5 3h11V2h-11z"/>
+                                                                                    </svg>
+                                                                                </button>
+                                                                            </form>
+                                                                        </span>
+                                                                    @endcan
+                                                                </div>
+                                                            </div>
+                                                        @empty
+                                                            <div class="scc__wrap">
+                                                                <div class="scc__info">
+                                                                    <i class="icofont-test-bulb"></i>
+                                                                    <h5>В этом разделе пока нет тестов</h5>
+                                                                </div>
+                                                            </div>
+                                                        @endforelse
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -374,119 +502,10 @@
 
 
 
-
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="headingTwo">
-                                                <button
-                                                    class="accordion-button collapsed"
-                                                    type="button"
-                                                    data-bs-toggle="collapse"
-                                                    data-bs-target="#collapseTwo"
-                                                    aria-expanded="false"
-                                                    aria-controls="collapseTwo"
-                                                >
-                                                    Раздел первый
-                                                </button>
-                                            </h2>
-                                            <div
-                                                id="collapseTwo"
-                                                class="accordion-collapse collapse"
-                                                aria-labelledby="headingTwo"
-                                                data-bs-parent="#accordionExample"
-                                            >
-                                                <div class="accordion-body">
-                                                    <div class="scc__wrap">
-                                                        <div class="scc__info">
-                                                            <i class="icofont-video-alt"></i>
-                                                            <h5>
-                                                                <span>Video :</span> Lorem ipsum dolor sit
-                                                                amet.
-                                                            </h5>
-                                                        </div>
-                                                        <div class="scc__meta">
-
-                                                            <a href="lesson.html"
-                                                            ><span><i class="icofont-lock"></i></span
-                                                                ></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="scc__wrap">
-                                                        <div class="scc__info">
-                                                            <i class="icofont-video-alt"></i>
-                                                            <h5>
-                                                                <span>Video :</span> Lorem ipsum dolor sit
-                                                                amet.
-                                                            </h5>
-                                                        </div>
-                                                        <div class="scc__meta">
-
-                                                            <a href="lesson.html"
-                                                            ><span><i class="icofont-lock"></i></span
-                                                                ></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="scc__wrap">
-                                                        <div class="scc__info">
-                                                            <i class="icofont-video-alt"></i>
-                                                            <h5>
-                                                                <span>Video :</span> Lorem ipsum dolor sit
-                                                                amet.
-                                                            </h5>
-                                                        </div>
-                                                        <div class="scc__meta">
-                                                            <!-- <span class="time"> <i class="icofont-clock-time"></i> 10 minutes</span> -->
-                                                            <a href="lesson.html"
-                                                            ><span><i class="icofont-lock"></i></span
-                                                                ></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="scc__wrap">
-                                                        <div class="scc__info">
-                                                            <i class="icofont-video-alt"></i>
-                                                            <h5>
-                                                                <span>Video :</span> Lorem ipsum dolor sit
-                                                                amet.
-                                                            </h5>
-                                                        </div>
-                                                        <div class="scc__meta">
-                                                            <!-- <span class="time"> <i class="icofont-clock-time"></i> 15 minutes</span> -->
-                                                            <a href="lesson.html"
-                                                            ><span><i class="icofont-lock"></i></span
-                                                                ></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="scc__wrap">
-                                                        <div class="scc__info">
-                                                            <i class="icofont-video-alt"></i>
-                                                            <h5>
-                                                                <span>Video :</span> Lorem ipsum dolor sit
-                                                                amet.
-                                                            </h5>
-                                                        </div>
-                                                        <div class="scc__meta">
-                                                            <!-- <span class="time"> <i class="icofont-clock-time"></i> 08 minutes</span> -->
-                                                            <a href="lesson.html"
-                                                            ><span><i class="icofont-lock"></i></span
-                                                                ></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="scc__wrap">
-                                                        <div class="scc__info">
-                                                            <i class="icofont-file-text"></i>
-                                                            <h5><span>Lesson 03 Exam :</span></h5>
-                                                        </div>
-                                                        <div class="scc__meta">
-                                  <span
-                                  ><i class="icofont-lock"></i> 20 Ques</span
-                                  >
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
 
+                                {{--  Описание курса   --}}
                                 <div
                                     class="tab-pane fade"
                                     id="projects__one"

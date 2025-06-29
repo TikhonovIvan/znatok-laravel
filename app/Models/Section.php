@@ -30,4 +30,9 @@ class Section extends Model
         return $this->hasMany(Video::class);
     }
 
+    public function tests()
+    {
+        return $this->hasMany(Test::class);
+    }
+
 }
