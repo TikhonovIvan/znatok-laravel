@@ -120,8 +120,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/course/lesson/test/delete/{id}', [TestController::class, 'destroy'])->name('course.test.delete');
 
     /*Создание вопросов и ответов к тесту*/
-    Route::get('/course/{course}/lesson/questions/create', [TestController::class, 'create'])->name('course.test.create');
-    Route::post('/course/{course}/lesson/questions/create', [TestController::class, 'store'])->name('course.test.store');
+//    Route::get('/course/{course}/lesson/questions/create', [TestController::class, 'create'])->name('course.test.create');
+//    Route::post('/course/{course}/lesson/questions/create', [TestController::class, 'store'])->name('course.test.store');
 
 
 
