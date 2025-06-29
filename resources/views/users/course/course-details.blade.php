@@ -112,7 +112,7 @@
                                             <div class="course__summery__button">
                                                 <a
                                                     class="default__button"
-                                                    href="create-test-questions.html"
+                                                    href="{{route('course.test.questions.create',$courseInfo->id)}}"
                                                 >
                                                     Вопросы к тесту
                                                 </a>

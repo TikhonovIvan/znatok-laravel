@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
@@ -120,8 +121,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/course/lesson/test/delete/{id}', [TestController::class, 'destroy'])->name('course.test.delete');
 
     /*Создание вопросов и ответов к тесту*/
-//    Route::get('/course/{course}/lesson/questions/create', [TestController::class, 'create'])->name('course.test.create');
-//    Route::post('/course/{course}/lesson/questions/create', [TestController::class, 'store'])->name('course.test.store');
+    Route::get('/course/{course}/lesson/questions/create', [QuestionController::class, 'create'])->name('course.test.questions.create');
+    Route::post('/course/{course}/lesson/questions/create', [QuestionController::class, 'store'])->name('course.test.questions.store');
 
 
 
