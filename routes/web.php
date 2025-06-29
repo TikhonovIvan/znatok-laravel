@@ -114,8 +114,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/course/lesson/test/edit/{id}', [TestController::class, 'edit'])->name('course.test.edit');
     Route::put('/course/lesson/test/edit/{id}', [TestController::class, 'update'])->name('course.test.update');
 
-    /*Просмотр теста */
-    Route::get('/course/lesson/test/show/{id}', [TestController::class, 'show'])->name('course.test.show');
+
 
     /*Удалить курс*/
     Route::delete('/course/lesson/test/delete/{id}', [TestController::class, 'destroy'])->name('course.test.delete');
@@ -129,6 +128,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/course/lesson/questions/edit/{id}', [QuestionController::class, 'edit'])->name('course.test.questions.edit');
     Route::put('/course/lesson/questions/edit/{id}', [QuestionController::class, 'update'])->name('course.test.questions.update');
 
+    /*Просмотр теста */
+    Route::get('/course/lesson/test/show/{id}', [TestController::class, 'show'])->name('course.test.show');
+    /*Результат теста*/
+    Route::post('/test/{test}/submit', [TestController::class, 'submit'])->name('test.submit');
 
 
 

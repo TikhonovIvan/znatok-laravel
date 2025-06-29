@@ -66,6 +66,42 @@ class TestController extends Controller
         ]);
     }
 
+    public function submit(Request $request, $testId)
+    {
+        $test = Test::with('questions.answers')->findOrFail($testId);
+
+        $correctCount = 0;
+
+        $userAnswers = $request->input('answers', []); // answers[question_id][]
+
+        foreach ($test->questions as $question) {
+            $correctAnswers = $question->answers
+                ->where('is_correct', true)
+                ->pluck('id')
+                ->sort()
+                ->values();
+
+            $userChecked = collect($userAnswers[$question->id] ?? [])
+                ->map(fn($v) => (int)$v)
+                ->sort()
+                ->values();
+
+            if (
+                $correctAnswers->count() &&
+                empty(array_diff($correctAnswers->toArray(), $userChecked->toArray())) &&
+                empty(array_diff($userChecked->toArray(), $correctAnswers->toArray()))
+            ) {
+                $correctCount++;
+            }
+        }
+
+        return view('users.test.result', [
+            'test' => $test,
+            'correctCount' => $correctCount,
+            'totalQuestions' => $test->questions->count(),
+        ]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
