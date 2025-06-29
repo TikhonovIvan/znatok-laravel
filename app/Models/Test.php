@@ -17,4 +17,9 @@ class Test extends Model
     {
         return $this->belongsTo(Section::class);
     }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
 }

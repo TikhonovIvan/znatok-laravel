@@ -125,6 +125,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/course/{course}/lesson/questions/create', [QuestionController::class, 'store'])->name('course.test.questions.store');
 
 
+    /*Редактирование вопросов и ответов*/
+    Route::get('/course/lesson/questions/edit/{id}', [QuestionController::class, 'edit'])->name('course.test.questions.edit');
+    Route::put('/course/lesson/questions/edit/{id}', [QuestionController::class, 'update'])->name('course.test.questions.update');
+
+
+
 
 
 });

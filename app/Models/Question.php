@@ -20,4 +20,14 @@ class Question extends Model
     {
         return $this->belongsTo(Test::class);
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($question) {
+            // При удалении вопроса удаляем все связанные ответы
+            $question->answers()->delete();
+        });
+    }
 }
