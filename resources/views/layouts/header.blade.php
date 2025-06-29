@@ -58,7 +58,7 @@
 
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 main_menu_wrap ">
+                <div class="col-xl-8 col-lg-8 main_menu_wrap ">
                     <div class="headerarea__main__menu">
                         <nav>
                             <ul>
@@ -75,7 +75,7 @@
                                 </li>
 
                                 <li class="mega__menu position-static">
-                                    <a class="headerarea__has__dropdown" href="course.html"
+                                    <a class="headerarea__has__dropdown" href="{{route('courses')}}"
                                     >Курсы
                                     </a>
                                 </li>
@@ -87,7 +87,7 @@
                         </nav>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
+                <div class="col-xl-2 col-lg-2 col-md-6">
                     <div class="headerarea__right">
 
                         @auth
@@ -154,8 +154,8 @@
                     <ul class="mobile-menu">
                         <li class="menu-item-has-children"><a href="{{route('home')}}">Главная</a></li>
                         <li class="menu-item-has-children "><a href="{{route('about')}}">О нас</a></li>
-                        <li class="menu-item-has-children "><a href="blog.html">Блог</a></li>
-                        <li class="menu-item-has-children "><a href="course.html">Курсы</a></li>
+                        <li class="menu-item-has-children  d-none"><a href="blog.html">Блог</a></li>
+                        <li class="menu-item-has-children "><a  href="{{route('courses')}}">Курсы</a></li>
 
                     </ul>
                 </nav>
@@ -169,11 +169,11 @@
                 <a class="mobile-account-active" href="#">Аккаунт <i class="icofont-thin-down"></i></a>
                 <div class="lang-curr-dropdown account-dropdown-active">
                     <ul>
-                        <li><a href="{{route('login')}}">Вход</a></li>
-                        <br>
-                        <li><a href="{{route('login')}}">Регистрация</a></li>
-                        <br>
-                        <li><a href="login.html">Кабинет</a></li>
+                        @auth
+                            <li><a href="{{route('profile')}}">Кабинет</a></li>
+                        @else
+                            <li><a href="{{route('login')}}">Вход</a></li>
+                        @endauth
                     </ul>
                 </div>
             </div>

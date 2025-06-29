@@ -57,6 +57,35 @@ class CourseController extends Controller
     }
 
 
+
+    public function indexList(Request $request)
+    {
+        $query = Course::with('author')
+            ->where('status', 'publish'); // статус вместо is_published
+
+        if ($request->filled('title')) {
+            $query->where('title', 'like', '%' . $request->title . '%');
+        }
+
+        if ($request->filled('category')) {
+            $query->where('category', $request->category);
+        }
+
+        $courses = $query->paginate(9);
+
+        $categories = Course::select('category')
+            ->distinct()
+            ->get()
+            ->pluck('category');
+
+        return view('course', [
+            'courses' => $courses,
+            'categories' => $categories,
+            'filters' => $request->only(['title', 'category']),
+        ]);
+    }
+
+
     /**
      * Show the form for creating a new resource.
      */
@@ -294,5 +323,10 @@ class CourseController extends Controller
             ->route('course.details-course', $courseId)
             ->with('success', 'Раздел успешно удалён');
     }
+
+
+
+
+
 
 }

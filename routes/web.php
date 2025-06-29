@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 /*==== Главная страница и О нас ====*/
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::get('/courses-list', [CourseController::class, 'indexList'])->name('courses');
+
 
 
 
