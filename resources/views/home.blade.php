@@ -29,11 +29,22 @@
                                 Больше 200 различных курсов и статей на разные профессии и темы.
                             </p>
                         </div>
-                        <div class="hreobannerarea__button__2">
-                            <a class="default__button" href="#">Посмотреть курсы</a>
-                            <a class="default__button hreobannerarea__button__3" href="#"
-                            >Узнать больше</a
-                            >
+                        <div class="d-flex gap-4">
+                            <a
+                                class="create__course__bottom__button_top"
+                                style="
+      position: relative;
+      z-index: 9999;
+      opacity: 1;
+      background-color: rgba(95, 45, 237, 1) !important; /* Например, синий фон */
+      color: white; /* Цвет текста */
+      padding: 10px 20px; /* Внутренние отступы */
+      border-radius: 5px; /* Закруглённые углы */
+      text-decoration: none; /* Убрать подчёркивание */
+   "
+                                href="{{route('courses')}}"
+                            >Узнать больше</a>
+
                         </div>
                     </div>
                 </div>
@@ -55,7 +66,7 @@
         <div class="herobannerarea__icon__2">
             <img
                 loading="lazy"
-                class="herobanner__common__img herobanner__img__1"
+                class="herobanner__common__img herobanner__img__1 d-none"
                 src="{{asset('assets/img/herobanner/herobanner__1.png')}}"
                 alt="photo"
             />

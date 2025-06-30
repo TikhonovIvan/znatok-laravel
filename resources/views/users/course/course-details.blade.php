@@ -18,9 +18,9 @@
                     </div>
 
                     <div class="blog__details__content__wraper">
-                        <div class="course__button__wraper" data-aos="fade-up">
-                            <div class="course__button">
-                                <a href="#" style="width: 250px">{{$courseInfo->category}}</a>
+                        <div class="course__button__wraper flex-wrap gap-3" data-aos="fade-up">
+                            <div class="course__button ">
+                                <a href="#" class="py-2 d-flex align-items-center justify-content-center" style="width: 250px ; height: 40px ; ">{{$courseInfo->category}}</a>
                             </div>
                             <div class="course__date">
                                 <p>Последнее обновление: <span>{{$courseInfo->updated_at->format('d.m.Y')}}</span></p>

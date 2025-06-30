@@ -69,8 +69,13 @@ class AuthController extends Controller
             'role' => ['required'],
             'password' => ['required', 'string', 'min:8'],
         ]);
-        User::query()->create($validated);
-        return redirect()->route('login')->with('success', 'Регистрация успешна пройдена');
+
+        $user = User::query()->create($validated);
+
+        // авторизовать сразу
+        Auth::login($user);
+
+        return redirect()->route('profile')->with('success', 'Регистрация успешна, добро пожаловать!');
     }
 
 

@@ -47,7 +47,7 @@
     <div class="headerarea headerarea__2 header__sticky header__area">
         <div class="container desktop__menu__wrapper ">
             <div class="row ">
-                <div class="col-xl-2 col-lg-2 col-md-6">
+                <div class="col-2">
                     <div class="headerarea__left">
                         <div class="headerarea__left__logo">
 
@@ -58,7 +58,7 @@
 
                     </div>
                 </div>
-                <div class="col-xl-8 col-lg-8 main_menu_wrap ">
+                <div class="col-6 main_menu_wrap ">
                     <div class="headerarea__main__menu">
                         <nav>
                             <ul>
@@ -87,23 +87,41 @@
                         </nav>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-2 col-md-6">
+                <div class="col-4">
                     <div class="headerarea__right">
 
                         @auth
-                        <div class="headerarea__login  ">
-                            @if(auth()->user()->role == 'student')
-                            <span class="me-3">Статус: Ученик </span>
-                            @else
-                                <span class="me-3 ">Статус: Учитель</span>
-                            @endif
-                            <span class="me-3">{{ auth()->user()->last_name }} {{ auth()->user()->first_name }} </span>
-                            <a href="{{route('profile')}}"><i class="icofont-user-alt-5"></i></a>
-                        </div>
+                            <div class="headerarea__login  ">
+                                @if(auth()->user()->role == 'student')
+                                    <div class="d-flex align-items-center">
+                                        <div class="d-flex flex-column">
+                                            <span class="me-3">Статус: Ученик </span>
+
+                                            <span
+                                                class="me-3">{{ auth()->user()->last_name }} {{ auth()->user()->first_name }} </span>
+                                        </div>
+
+                                        <a href="{{route('profile')}}"><i class="icofont-user-alt-5"></i></a>
+                                    </div>
+
+                                @else
+                                    <div class="d-flex align-items-center">
+                                        <div class="d-flex flex-column">
+                                            <span class="me-3 ">Статус: Учитель</span>
+
+                                            <span
+                                                class="me-3">{{ auth()->user()->last_name }} {{ auth()->user()->first_name }} </span>
+                                        </div>
+                                        <a href="{{route('profile')}}"><i class="icofont-user-alt-5"></i></a>
+                                    </div>
+                                @endif
+
+
+                            </div>
                         @else
-                        <div class="headerarea__button">
-                            <a href="{{route('login')}}">Начать обучение</a>
-                        </div>
+                            <div class="headerarea__button">
+                                <a href="{{route('login')}}">Начать обучение</a>
+                            </div>
                         @endauth
                     </div>
                 </div>
@@ -155,7 +173,7 @@
                         <li class="menu-item-has-children"><a href="{{route('home')}}">Главная</a></li>
                         <li class="menu-item-has-children "><a href="{{route('about')}}">О нас</a></li>
                         <li class="menu-item-has-children  d-none"><a href="blog.html">Блог</a></li>
-                        <li class="menu-item-has-children "><a  href="{{route('courses')}}">Курсы</a></li>
+                        <li class="menu-item-has-children "><a href="{{route('courses')}}">Курсы</a></li>
 
                     </ul>
                 </nav>
@@ -163,19 +181,16 @@
             </div>
 
         </div>
-        <div class="mobile-curr-lang-wrap">
+        <div class="mobile-curr-lang-wrap ">
 
-            <div class="single-mobile-curr-lang">
-                <a class="mobile-account-active" href="#">Аккаунт <i class="icofont-thin-down"></i></a>
-                <div class="lang-curr-dropdown account-dropdown-active">
-                    <ul>
-                        @auth
-                            <li><a href="{{route('profile')}}">Кабинет</a></li>
-                        @else
-                            <li><a href="{{route('login')}}">Вход</a></li>
-                        @endauth
-                    </ul>
-                </div>
+            <div class="single-mobile-curr-lang d-flex flex-column gap-1">
+                @auth
+                    <a class="create__course__bottom__button_top" style="color: #fff" href="{{route('profile')}}">Кабинет</a>
+                @else
+                    <a class="create__course__bottom__button_top" style="color: #fff" href="{{route('login')}}">Вход</a>
+                @endauth
+
+
             </div>
         </div>
         <div class="mobile-social-wrap">
@@ -190,7 +205,6 @@
 <!-- Mobile Menu end Here -->
 
 
-
 <!-- Зафиксировать тему -->
 <div>
     <div class="theme__shadow__circle"></div>
@@ -201,7 +215,7 @@
 
 <div class="container mt-5">
     <div class="row d-flex justify-content-center">
-        <div class="col-6 text-center">
+        <div class=" col-12 col-lg-8  text-center">
 
             @if ($errors->any())
                 <div class="alert alert-dismissible show" style="background: #5f2ded; color: #fff" role="alert">
@@ -233,18 +247,18 @@
 </div>
 
 
-{{--<script>--}}
-{{--    document.addEventListener('DOMContentLoaded', function() {--}}
-{{--        const alertElement = document.querySelector('.alert');--}}
-{{--        if (alertElement) {--}}
-{{--            setTimeout(() => {--}}
-{{--                alertElement.classList.add('fade'); // плавное исчезновение--}}
-{{--                alertElement.classList.remove('show');--}}
-{{--                // полностью убрать из DOM через ещё 0.5 сек, когда анимация закончится--}}
-{{--                setTimeout(() => {--}}
-{{--                    alertElement.remove();--}}
-{{--                }, 500);--}}
-{{--            }, 4000);--}}
-{{--        }--}}
-{{--    });--}}
-{{--</script>--}}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const alertElement = document.querySelector('.alert');
+        if (alertElement) {
+            setTimeout(() => {
+                alertElement.classList.add('fade'); // плавное исчезновение
+                alertElement.classList.remove('show');
+                // полностью убрать из DOM через ещё 0.5 сек, когда анимация закончится
+                setTimeout(() => {
+                    alertElement.remove();
+                }, 500);
+            }, 3000);
+        }
+    });
+</script>

@@ -80,7 +80,7 @@
                 </div>
 
                 <div
-                    class="col-xl-3 col-lg-3 col-md-6 col-sm-12"
+                    class="col-xl-3 col-lg-3 col-md-6 col-sm-12 d-none"
                     data-aos="fade-up"
                 >
                     <div class="footerarea__right__wraper footerarea__inner">

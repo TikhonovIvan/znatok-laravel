@@ -11796,8 +11796,18 @@ Breadcrumb Area
   .dashboardarea__inner {
     padding: 20px;
     text-align: center;
-    justify-content: center;
+      row-gap: 10px;
+
+
   }
+}
+@media (max-width: 425px) {
+    .dashboardarea__inner {
+        padding: 20px;
+        text-align: center;
+        justify-content: center;
+
+    }
 }
 .dashboardarea__inner.student__dashboard__inner {
   background: var(--skycolor);
@@ -14012,7 +14022,7 @@ Dark Mode
 }
 
 .create__course__bottom__button_top {
-  background: var(--primaryColor);
+  background: var(--primaryColor) !important;
   color: #FFF ;
   display: inline-block;
   text-align: center;
@@ -14027,6 +14037,16 @@ Dark Mode
   .create__course__bottom__button_top {
     width: 100%;
   }
+    .fs-size-top {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 321px) {
+
+    .fs-size-top {
+        font-size: 14px;
+    }
 }
 
 .create__course__bottom__button_top:hover {
@@ -14050,3 +14070,7 @@ Dark Mode
     border-radius: 20px;
     font-weight: 700;
 }
+
+
+
+

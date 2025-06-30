@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Section;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
@@ -172,20 +173,35 @@ class CourseController extends Controller
     /*Обновить курс*/
     public function update(Request $request, string $id)
     {
-
         $course = Course::query()->findOrFail($id);
+
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'cover' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             'category' => ['required', 'string', 'max:255'],
             'short_description' => ['required', 'string', 'max:1000'],
             'status' => ['required', 'in:draft,pending,publish'],
-            'course_code' => ['required', 'string', 'max:255'],
+            'course_code' => ['required', 'string', 'max:255', 'unique:courses,course_code,'.$id],
         ]);
 
-        $course->update($validated);
-        return redirect()->route('course.details-course', $course->id)->with('success', 'Данные курса обновлены');
+        // Обработка загрузки изображения
+        if ($request->hasFile('cover')) {
+            // Удаляем старое изображение, если оно есть
+            if ($course->cover) {
+                Storage::disk('public_uploads')->delete($course->cover);
+            }
 
+            // Сохраняем новое изображение в public_uploads
+            $validated['cover'] = $request->file('cover')->store('courses', 'public_uploads');
+        } else {
+            // Если изображение не загружали, оставляем старое
+            unset($validated['cover']);
+        }
+
+        $course->update($validated);
+
+        return redirect()->route('course.details-course', $course->id)
+            ->with('success', 'Данные курса обновлены');
     }
 
 
