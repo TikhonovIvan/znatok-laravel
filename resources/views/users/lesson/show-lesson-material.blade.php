@@ -46,22 +46,10 @@
                                 <div class="section__title__heading ">
                                     <h2>{{$lesson->title}}</h2>
                                 </div>
+                                <div class="aboutarea__para__5" >
+                                   {!! $lesson->content !!}
+                                </div>
                             </div>
-                            <div class="about__text__5">
-                                <p>Meet my startup design agency Shape Rex Currently I am working at CodeNext as Product Designer. Lorem ipsum dolor sit amet consectetur adipisicing elit. A, quaerat excepturi accusantium eum, dolorem ipsa deleniti dicta voluptates reiciendis tempore aliquid assumenda at labore, unde quibusdam! Tenetur hic enim odit.
-                                    <br>
-                                    <br>
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. In illum facilis quaerat expedita. Inventore, commodi. Non molestias neque esse ipsam temporibus quia accusantium voluptas facilis enim blanditiis, doloribus, facere omnis.
-                                </p>
-                            </div>
-
-                            <div class="container">
-                                {!!  $lesson->contetn!!}
-
-                            </div>
-
-
-
                         </div>
                     </div>
                 </div>

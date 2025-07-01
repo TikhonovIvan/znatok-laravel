@@ -130,7 +130,7 @@
                         </div>
                         <div class="aboutarea__headding heading__underline">
 
-                            <h2>Добро пожаловать в Центр <span>онлайн</span> - обучения</h2>
+                            <h2>Добро пожаловать в Центр онлайн - обучения</h2>
                         </div>
                         <div class="aboutarea__para aboutarea__para__2">
                             <p>Образовательная платформа с доступом к разлычным курсам из любой точки мира.</p>
@@ -235,7 +235,7 @@
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6" data-aos="fade-up">
                     <div class="populerarea__heading heading__underline">
                         <div class="default__small__button">Список курсов</div>
-                        <h2>Популярные <span>темы</span></h2>
+                        <h2>Популярные темы</h2>
                     </div>
                 </div>
                 <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6" data-aos="fade-up">
@@ -865,7 +865,7 @@
                     </div>
                 </div>
                 <div
-                    class="col-xl-7 col-lg-7 col-md-12 col-sm-12"
+                    class="col-xl-7 col-lg-7 col-md-12 col-sm-12 d-none"
                     data-aos="fade-up"
                 >
                     <div class="gridfilter_nav grid__filter__2 gridFilter">
@@ -878,7 +878,7 @@
                 </div>
             </div>
 
-            <div class="row grid " data-aos="fade-up">
+            <div class="row grid  " data-aos="fade-up">
                 @forelse($courses as $course)
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 grid-item filter1 filter3 ">
                         <div class="gridarea__wraper card-container" style="height: 460px;">
@@ -924,16 +924,21 @@
                                 </div>
                             </div>
                         </div>
-                        <div >
-                            {{ $courses->links('vendor.pagination.custom') }}
-                        </div>
+
                     </div>
+
 
 
 
                 @empty
                     <p>Пока нет опубликованных курсов.</p>
                 @endforelse
+            </div>
+            <div class="row">
+                <div class="col-12" >
+                    {{ $courses->links('vendor.pagination.custom') }}
+                </div>
+
             </div>
 
         </div>

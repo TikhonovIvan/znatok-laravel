@@ -73,7 +73,7 @@
                                                                 <input
                                                                     type="text"
                                                                     name="title"
-                                                                    placeholder="Course Title"
+                                                                    placeholder="Название курса"
                                                                 />
                                                             </div>
                                                         </div>

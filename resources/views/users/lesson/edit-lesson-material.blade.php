@@ -8,7 +8,7 @@
     <div class="create__course sp_100">
         <div class="container">
 
-            <form action="{{route('course.lesson.update',$lesson->id )}}" method="post">
+            <form action="{{route('course.lesson.update', $lesson )}}" method="post">
                 @csrf
                 @method('PUT')
                 <div class="row">
@@ -91,7 +91,7 @@
                         <div class="row">
                             <div class="col-xl-8 col-lg-8 col-md-6 col-12">
                                 <div class="create__course__bottom__button">
-                                    <button  class="create__course__bottom__button_top" type="submit">Создать лекцию</button>
+                                    <button  class="create__course__bottom__button_top" type="submit" style="width: 250px">Редактировать лекцию</button>
                                 </div>
                             </div>
                         </div>

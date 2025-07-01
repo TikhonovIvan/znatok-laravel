@@ -122,7 +122,7 @@
                         <div class="row">
                             <div class="col-xl-8 col-lg-8 col-md-6 col-12">
                                 <div class="create__course__bottom__button">
-                                    <button  type="submit" class="create__course__bottom__button_top" >Создать видео материал</button>
+                                    <button  type="submit" class="create__course__bottom__button_top"  style="width: 250px">Создать видео материал</button>
                                 </div>
                             </div>
                         </div>

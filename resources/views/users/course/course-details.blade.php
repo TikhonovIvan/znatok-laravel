@@ -546,6 +546,7 @@
                     <div class="course__details__sidebar">
                         <div class="event__sidebar__wraper" data-aos="fade-up">
 
+                            @can('student')
                             <div class="course__summery__button">
 
                                 <form action="{{ route('student.add-course') }}" method="post">
@@ -579,6 +580,7 @@
                                 </form>
                             </div>
 
+                            @endcan
                             <div class="course__summery__lists">
                                 <ul>
                                     <li>

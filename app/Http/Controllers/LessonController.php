@@ -61,7 +61,10 @@ class LessonController extends Controller
     public function edit(string $id)
     {
         $lesson = Lectures::query()->findOrFail($id);
-        $sections = Section::where('course_id', $id)->get();
+
+        // получаем все разделы того курса, к которому принадлежит видео через его section
+        $sections = Section::where('course_id', $lesson->section->course_id)->get();
+
         return view('users.lesson.edit-lesson-material', [
             'lesson' => $lesson,
             'sections' => $sections,
