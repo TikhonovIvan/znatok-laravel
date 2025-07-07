@@ -901,7 +901,7 @@
                                             <i class="icofont-book-alt"></i>
                                             {{
                                                 $course->sections->sum(fn($section) => $section->lectures->count())
-                                            }} Лекций
+                                            }} лек.
                                         </li>
                                     </ul>
                                 </div>

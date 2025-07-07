@@ -6,7 +6,7 @@
 @section('content')
 
 
-    <!-- aboutarea__5__section__start -->
+
     <div class="aboutarea__5 sp_bottom_100 sp_top_100">
         <div class="container">
             <div class="row">
@@ -59,9 +59,9 @@
             </div>
         </div>
     </div>
-    <!-- aboutarea__5__section__end -->
 
-    <!-- about__tap__section__start -->
+
+
     <div class="abouttabarea sp_bottom_70">
         <div class="container">
             <div class="row">
@@ -236,7 +236,7 @@
             </div>
         </div>
     </div>
-    <!-- .about__tap__section__end -->
+
 
 
 

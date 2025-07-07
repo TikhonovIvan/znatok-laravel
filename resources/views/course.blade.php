@@ -96,7 +96,7 @@
                                             <div class="gridarea__content card-content">
                                                 <div class="gridarea__list">
                                                     <ul class="d-flex flex-wrap">
-                                                        <li><i class="icofont-book-alt"></i> {{ $course->lessons_count ?? 0 }} ур.</li>
+                                                        <li><i class="icofont-book-alt"></i> {{ $course->sections->flatMap->lectures->count() }} лек.</li>
 
                                                     </ul>
                                                 </div>
