@@ -36,7 +36,7 @@
                             <form method="post" action="{{route('auth.login')}}">
                                 @csrf
                                 <div class="login__form">
-                                    <label class="form__label">Имя пользователя или адрес электронной почты</label>
+                                    <label class="form__label">Адрес электронной почты</label>
                                     <input class="common__login__input" type="email" name="email" placeholder="Введите email" required>
 
                                 </div>
@@ -50,7 +50,7 @@
                                         <input id="forgot" type="checkbox" >
                                         <label for="forgot"> Запомнить меня</label>
                                     </div>
-                                    <div class="text-end login__form__link">
+                                    <div class="text-end login__form__link d-none">
                                         <a href="#">Забыл пароль?</a>
                                     </div>
                                 </div>
